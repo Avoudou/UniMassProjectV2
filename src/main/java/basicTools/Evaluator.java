@@ -2,14 +2,12 @@ package basicTools;
 
 import objectDefinitions.CargoSpaceIndividual;
 import databases.Population;
+import databases.ShapeData;
 
-public class Evaluation {
+public class Evaluator {
 	
-	public void evaluateWeightsPopulation(Population aPopulation){
-		
-	}
-
-	public void evaluateWeightShapes(CargoSpaceIndividual aCargoSpace) {
+	public double getUtopianMaxWeight(CargoSpaceIndividual aCargoSpace,ShapeData cargoList) {
+		return 0;
 
 	}
 	
