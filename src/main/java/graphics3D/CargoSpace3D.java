@@ -31,71 +31,58 @@ import com.badlogic.gdx.graphics.g3d.utils.MeshPartBuilder;
 import com.badlogic.gdx.graphics.g3d.utils.ModelBuilder;
 import com.badlogic.gdx.math.MathUtils;
 
-
-
 public class CargoSpace3D extends Basic3DTest {
-	private Environment lights;
-	private PerspectiveCamera cam;
-	private ModelBatch modelBatch;
+
 	private List<ModelInstance> instances;
 	private CargoSpaceIndividual cargoSpace;
 	private int GRID_MIN = 0;
-    private int GRID_MAX_X = 0;
-    private int GRID_MAX_Y = 0;
-    private int GRID_MAX_Z = 0;
-	
-	
-	
-	
-	public CargoSpace3D(CargoSpaceIndividual cargoSpace) {
-			this.cargoSpace= cargoSpace;
-			GRID_MAX_Y= cargoSpace.getCargoSpace().length-1;
-			GRID_MAX_X = cargoSpace.getCargoSpace()[0].length-1;
-			GRID_MAX_Z = cargoSpace.getCargoSpace()[0][0].length-1;
-	}
+	private int GRID_MAX_X = 0;
+	private int GRID_MAX_Y = 0;
+	private int GRID_MAX_Z = 0;
 
+	public CargoSpace3D(CargoSpaceIndividual cargoSpace) {
+		this.cargoSpace = cargoSpace;
+		GRID_MAX_Y = cargoSpace.getCargoSpace().length - 1;
+		GRID_MAX_X = cargoSpace.getCargoSpace()[0].length - 1;
+		GRID_MAX_Z = cargoSpace.getCargoSpace()[0][0].length - 1;
+	}
 
 	@Override
 	public void create() {
 		lights = new Environment();
 		lights.set(new ColorAttribute(ColorAttribute.AmbientLight, 0.4f, 0.4f, 0.4f, 1f));
 		lights.add(new DirectionalLight().set(0.8f, 0.8f, 0.8f, -1f, -0.8f, -0.2f));
-		
+
 		modelBatch = new ModelBatch();
-		
-		cam = new PerspectiveCamera(80, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-		cam.position.set(30f, 16f, -20f);
-		cam.lookAt(16,16,16);
+
+		cam = new PerspectiveCamera(70, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		cam.position.set(30f, 40f, -20f);
+		cam.lookAt(-10, 15, 30);
 		cam.near = 1f;
 		cam.far = 300f;
 		cam.update();
-		
-//        ModelBuilder modelBuilder = new ModelBuilder();
-//        model = modelBuilder.createBox(5f, 5f, 5f, new Material(ColorAttribute.createDiffuse(Color.GREEN)),
-//        Usage.Position | Usage.Normal);
-//        instance = new ModelInstance(model);
-        
-        ModelBuilder modelBuilder = new ModelBuilder();
-        MeshPartBuilder builder;
-        
+
+		ModelBuilder modelBuilder = new ModelBuilder();
+
 		List<Model> models = new ArrayList<Model>();
 		instances = new ArrayList<ModelInstance>();
 
 		for (float x = GRID_MIN; x <= GRID_MAX_Y; x += 1) {
 			for (float y = GRID_MIN; y <= GRID_MAX_X; y += 1) {
 				for (float z = GRID_MIN; z <= GRID_MAX_Z; z += 1) {
-					
-					if(cargoSpace.getCargoSpace()[(int) x][(int) y][(int) z]!=0 ){
-						if(cargoSpace.getCargoSpace()[(int) x][(int) y][(int) z]%10==1||cargoSpace.getCargoSpace()[(int) x][(int) y][(int) z]%10==0){
-					drawCargoCube(modelBuilder, models, x, y, z, new Color(0.6f, .7f, .7f, 0));
+
+					if (cargoSpace.getCargoSpace()[(int) x][(int) y][(int) z] != 0) {
+						if (cargoSpace.getCargoSpace()[(int) x][(int) y][(int) z] % 10 == 1
+								|| cargoSpace.getCargoSpace()[(int) x][(int) y][(int) z] % 10 == 0) {
+							drawCargoCube(modelBuilder, models, x, y, z, new Color(0.6f, .7f, .7f, 0));
 						}
-						if(cargoSpace.getCargoSpace()[(int) x][(int) y][(int) z]%10==2){
+						if (cargoSpace.getCargoSpace()[(int) x][(int) y][(int) z] % 10 == 2) {
 							drawCargoCube(modelBuilder, models, x, y, z, new Color(0.3f, .7f, .9f, 0));
 						}
-						if(cargoSpace.getCargoSpace()[(int) x][(int) y][(int) z]%10==3){
+						if (cargoSpace.getCargoSpace()[(int) x][(int) y][(int) z] % 10 == 3) {
 							drawCargoCube(modelBuilder, models, x, y, z, new Color(0.9f, .4f, .2f, 0));
 						}
-						
+
 					}
 				}
 			}
@@ -104,13 +91,11 @@ public class CargoSpace3D extends Basic3DTest {
 
 	}
 
-
-	private void drawCargoCube(ModelBuilder modelBuilder, List<Model> models, float x, float y, float z,Color cubeColor) {
+	private void drawCargoCube(ModelBuilder modelBuilder, List<Model> models, float x, float y, float z, Color cubeColor) {
 		MeshPartBuilder builder;
 		modelBuilder.begin();
-//		builder = modelBuilder.part("grid",GL20.GL_TRIANGLES,Usage.Position | Usage.Normal,new Material(ColorAttribute.createDiffuse(new Color((MathUtils.random(0, 1)+0.1f), MathUtils.random(0, 1)+0.1f, MathUtils.random(0, 1)+0.1f, 0))));
-	
-		builder = modelBuilder.part("grid",GL20.GL_TRIANGLES,Usage.Position | Usage.Normal,new Material(ColorAttribute.createDiffuse(cubeColor)));
+		builder = modelBuilder.part("grid", GL20.GL_TRIANGLES, Usage.Position | Usage.Normal, new Material(
+				ColorAttribute.createDiffuse(cubeColor)));
 		builder.setColor(Color.GREEN);
 		builder.box(x, y, z, .9f, .9f, .9f);
 		models.add(modelBuilder.end());
@@ -120,15 +105,14 @@ public class CargoSpace3D extends Basic3DTest {
 
 	@Override
 	public void render() {
-        Gdx.gl.glViewport(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
-        
-        modelBatch.begin(cam);
-        for(ModelInstance instance : instances) {
-        	modelBatch.render(instance, lights);
-        }
-        modelBatch.end();
+		Gdx.gl.glViewport(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
+
+		modelBatch.begin(cam);
+		for (ModelInstance instance : instances) {
+			modelBatch.render(instance, lights);
+		}
+		modelBatch.end();
 	}
-	
 
 }

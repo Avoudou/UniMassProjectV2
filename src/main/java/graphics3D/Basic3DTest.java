@@ -37,7 +37,7 @@ import com.badlogic.gdx.graphics.g3d.utils.ModelBuilder;
  * See: http://blog.xoppa.com/basic-3d-using-libgdx-2/
  * @author Xoppa
  */
-public class Basic3DTest implements ApplicationListener {
+public abstract class Basic3DTest implements ApplicationListener {
 	public Environment lights;
 	public PerspectiveCamera cam;
 	public ModelBatch modelBatch;
