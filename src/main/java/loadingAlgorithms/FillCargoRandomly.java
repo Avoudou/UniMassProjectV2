@@ -22,7 +22,7 @@ public class FillCargoRandomly extends FillCargo {
 		Population aPopulation= new Population();
 		for(int i=0; i<populationSize;i++){
 			ShapesDefault shapes = new ShapesDefault("default");
-			CargoSpaceIndividual cargoSpace = new CargoSpaceIndividual(5, 32, 8);
+			CargoSpaceIndividual cargoSpace = new CargoSpaceIndividual(5, 33, 8);
 			
 			fillCargoSpaceRandomly(cargoSpace,shapes);
 			aPopulation.addCargoSpaceIndividual(cargoSpace);
