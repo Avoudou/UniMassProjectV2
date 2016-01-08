@@ -80,9 +80,9 @@ public class CargoSpace3D implements ApplicationListener {
 		
 		modelBatch = new ModelBatch();
 		
-		cam = new PerspectiveCamera(100, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-		cam.position.set(10f, 10f, 10f);
-		cam.lookAt(0,0,0);
+		cam = new PerspectiveCamera(80, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		cam.position.set(30f, 16f, -20f);
+		cam.lookAt(16,16,16);
 		cam.near = 1f;
 		cam.far = 300f;
 		cam.update();

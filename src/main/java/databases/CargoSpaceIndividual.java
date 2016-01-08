@@ -11,6 +11,9 @@ public class CargoSpaceIndividual {
 	@Getter
 	@Setter
 	private double fitness;
+	@Getter
+	@Setter
+	private double totalCargoValue;
 
 	public CargoSpaceIndividual(int xElemUnits, int yElemUnits, int zElemUnits) {
 		this.cargoSpace = new int[xElemUnits][yElemUnits][zElemUnits];

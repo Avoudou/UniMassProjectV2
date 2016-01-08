@@ -11,7 +11,8 @@ public class CargoSpaceIndividual {
 	@Getter
 	@Setter
 	private double fitness;
-	
+	@Getter
+	@Setter
 	private int totalWeight;
 
 	public CargoSpaceIndividual(int yElemUnits, int xElemUnits, int zElemUnits) {

@@ -30,19 +30,24 @@ public class FillCargoRandomly extends FillCargo {
 					if (space[i][j][k] == 0) {
 
 						ArrayList<CargoGenerator> tempList = new ArrayList<CargoGenerator>(ourShapes);
-						boolean somethingPlaced= false;
-						while (tempList.size() > 0 && somethingPlaced==false) {
-							System.out.println("trying");
+						boolean somethingPlaced = false;
+						// int counter=0;
+						while (tempList.size() > 0 && somethingPlaced == false) {
+
+							// counter ++;
+							// System.out.println("trying"+ counter);
+
 							int randomIndex = (int) (Math.random() * tempList.size());
-							CargoGenerator shape = ourShapes.get(randomIndex);
+							CargoGenerator shape = tempList.get(randomIndex);
 							tempList.remove(randomIndex);
 
 							if (collisionChecker(i, j, k, shape, aCargoSpace)) {
 								shapePlacer(i, j, k, aCargoSpace, shape);
-								System.out.println("change identity");
-								ourShapes.get(randomIndex).setShapeIdentity(ourShapes.get(randomIndex).getShapeIdentity()*10);
-								//System.out.println(ourShapes.get(randomIndex).getShapeIdentity());
-								somethingPlaced=true;
+								aCargoSpace.setTotalWeight(aCargoSpace.getTotalWeight() + shape.getWeightTotal());
+								ourShapes.get(randomIndex).setShapeIdentity(
+										ourShapes.get(randomIndex).getShapeIdentity() * 10);
+								// System.out.println(ourShapes.get(randomIndex).getShapeIdentity());
+								somethingPlaced = true;
 							}
 
 						}
