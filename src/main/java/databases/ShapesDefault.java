@@ -9,7 +9,7 @@ public class ShapesDefault extends ShapeData {
 
 	
 		private CargoGenerator shapeA = new CargoGenerator(2,2,4,2);
-		private CargoGenerator shapeB = new CargoGenerator(2,2,2,3);
+		private CargoGenerator shapeB = new CargoGenerator(2,3,4,3);
 		private CargoGenerator shapeC = new CargoGenerator(3,3,3,1);
 		
 		
