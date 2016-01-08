@@ -43,7 +43,7 @@ public class MainTests3D {
 		// new LwjglApplication(new CargoSpace3D(cargoSpace), config);
 		// new LwjglApplication(new Shape3D(new ShapesDefault().getShape(2)), config);
 
-		ShapesDefault shapes = new ShapesDefault("weighted");
+		ShapesDefault shapes = new ShapesDefault("default");
 		CargoSpaceIndividual cargoSpace = new CargoSpaceIndividual(5, 32, 8);
 		FillCargoRandomly randomLoader = new FillCargoRandomly(cargoSpace, shapes);
 		randomLoader.fillCargoSpaceRandomly();
