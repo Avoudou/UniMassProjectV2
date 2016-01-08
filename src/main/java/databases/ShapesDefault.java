@@ -12,7 +12,6 @@ public class ShapesDefault extends ShapeData {
 
 	public ShapesDefault() {
 		super.addShape(shapeA);
-
 		super.addShape(shapeB);
 		super.addShape(shapeC);
 	}
