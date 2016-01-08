@@ -21,7 +21,7 @@ public class ShapesDefault extends ShapeData {
 		super.addShape(shapeA);
 		shapeB.setWeightTotal(4);
 		super.addShape(shapeB);
-		shapeB.setWeightTotal(5);
+		shapeC.setWeightTotal(5);
 		super.addShape(shapeC);
 	}
 

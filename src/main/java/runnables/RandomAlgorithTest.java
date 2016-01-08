@@ -21,12 +21,19 @@ public class RandomAlgorithTest {
 		config.height = screenHeight;
 		FillCargoRandomly randomLoader = new FillCargoRandomly();
 
-		Population cargoList = randomLoader.createRandomPopulation(1000);
+		Population cargoList = randomLoader.createRandomPopulation(100000);
 		Evaluator evaluator = new Evaluator();
 		CargoSpaceIndividual bestSolution= evaluator.findBestCargoSpace(cargoList);
 		
-		double  utopiaWeight= evaluator.getUtopianMaxWeight(bestSolution, new ShapesDefault("default"));
+		ShapesDefault shapeList= new ShapesDefault("default");
+		
+		double  utopiaWeight= evaluator.getUtopianMaxWeight(bestSolution, shapeList);
 		int  solutionWeight= bestSolution.getTotalWeight();
+		
+		
+		System.out.println(shapeList.getShape(1).getWeightPerUnit());
+		System.out.println(shapeList.getShape(0).getWeightPerUnit());
+		System.out.println(shapeList.getShape(2).getWeightPerUnit());
 		
 		System.out.println("ideal weight= "+ utopiaWeight);
 		System.out.println("solutions weight total = "+ solutionWeight);

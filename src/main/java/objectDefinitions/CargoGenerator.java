@@ -41,7 +41,7 @@ public class CargoGenerator {
 
 	public void setWeightTotal(int weight) {
 		this.weightTotal = weight;
-		this.weightPerUnit = weight / (aShape.length + aShape[0].length + aShape[0][0].length);
+		this.weightPerUnit = 1.0000*weight / (aShape.length + aShape[0].length + aShape[0][0].length)*1.00000;
 	}
 
 }
