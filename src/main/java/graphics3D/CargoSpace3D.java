@@ -66,7 +66,7 @@ public class CargoSpace3D extends Basic3DTest {
 
 		List<Model> models = new ArrayList<Model>();
 		instances = new ArrayList<ModelInstance>();
-
+		Gdx.gl.glEnable(GL20.GL_BLEND);
 		for (float x = GRID_MIN; x <= GRID_MAX_Y; x += 1) {
 			for (float y = GRID_MIN; y <= GRID_MAX_X; y += 1) {
 				for (float z = GRID_MIN; z <= GRID_MAX_Z; z += 1) {
@@ -74,10 +74,10 @@ public class CargoSpace3D extends Basic3DTest {
 					if (cargoSpace.getCargoSpace()[(int) x][(int) y][(int) z] != 0) {
 						if (cargoSpace.getCargoSpace()[(int) x][(int) y][(int) z] % 10 == 1
 								|| cargoSpace.getCargoSpace()[(int) x][(int) y][(int) z] % 10 == 0) {
-							drawCargoCube(modelBuilder, models, x, y, z, new Color(0.6f, .7f, .7f, 0));
+							drawCargoCube(modelBuilder, models, x, y, z, new Color(MathUtils.random(0.5f,1), .7f, .7f, 0.5f));
 						}
 						if (cargoSpace.getCargoSpace()[(int) x][(int) y][(int) z] % 10 == 2) {
-							drawCargoCube(modelBuilder, models, x, y, z, new Color(0.3f, .7f, .9f, 0));
+							drawCargoCube(modelBuilder, models, x, y, z, new Color(0.3f, .8f, .6f, 0));
 						}
 						if (cargoSpace.getCargoSpace()[(int) x][(int) y][(int) z] % 10 == 3) {
 							drawCargoCube(modelBuilder, models, x, y, z, new Color(0.9f, .4f, .2f, 0));
@@ -105,9 +105,10 @@ public class CargoSpace3D extends Basic3DTest {
 
 	@Override
 	public void render() {
+		
 		Gdx.gl.glViewport(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
-
+		Gdx.gl.glEnable(GL20.GL_BLEND);
 		modelBatch.begin(cam);
 		for (ModelInstance instance : instances) {
 			modelBatch.render(instance, lights);

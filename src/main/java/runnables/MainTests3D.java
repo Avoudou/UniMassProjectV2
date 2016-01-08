@@ -20,36 +20,24 @@ public class MainTests3D {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		config.width = screenWidth;
 		config.height = screenHeight;
-		// ShapeGenerator shape = new ShapeGenerator (2, 2, 4, 1);
-		// ShapeGenerator shape1 = new ShapeGenerator(3, 3, 3, 3);
-		// ShapeGenerator shape2 = new ShapeGenerator(2, 3, 4, 2);
-		//
-		// CargoSpaceIndividual cargoSpace = new CargoSpaceIndividual(6, 6, 6);
-		// FillCargo cargoLoader = new FillCargo();
-		// cargoLoader.shapePlacer(0, 0, 0, cargoSpace, shape1);
-		//
-		// if(cargoLoader.collisionChecker(3, 0, 0, shape1, cargoSpace)){
-		// cargoLoader.shapePlacer(3, 0, 0, cargoSpace, shape1);
-		// }
-		// if(cargoLoader.collisionChecker(3, 0, 0, shape2, cargoSpace)){
-		// cargoLoader.shapePlacer(3, 0, 0, cargoSpace, shape2);
-		// }
-		// //cargoLoader.shapePlacer( 0, 0, 0,cargoSpace, shape1);
-		// System.out.println(cargoLoader.collisionChecker(0, 0, 0,shape1, cargoSpace));
-		//
-		//
-		//
-		//
-		// new LwjglApplication(new CargoSpace3D(cargoSpace), config);
+		 CargoGenerator shape = new CargoGenerator (2, 2, 4, 1);
+		 CargoGenerator shape1 = new CargoGenerator(3, 3, 3, 3);
+		 CargoGenerator shape2 = new CargoGenerator(2, 3, 4, 2);
+		
+		 CargoSpaceIndividual cargoSpace = new CargoSpaceIndividual(6, 6, 6);
+		 FillCargo cargoLoader = new FillCargo();
+		
+		 cargoLoader.shapePlacer(0, 0, 0, cargoSpace, shape1);
+		
+		
+		
+		
+		
+		
+		 new LwjglApplication(new CargoSpace3D(cargoSpace), config);
 		// new LwjglApplication(new Shape3D(new ShapesDefault().getShape(2)), config);
 
-		ShapesDefault shapes = new ShapesDefault("default");
-		CargoSpaceIndividual cargoSpace = new CargoSpaceIndividual(5, 32, 8);
-		FillCargoRandomly randomLoader = new FillCargoRandomly(cargoSpace, shapes);
-		randomLoader.fillCargoSpaceRandomly();
-		System.out.println("tottal weight loaded :" + cargoSpace.getTotalWeight());
-
-		new LwjglApplication(new CargoSpace3D(cargoSpace), config);
+		
 
 	}
 

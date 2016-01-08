@@ -5,20 +5,33 @@ import java.util.ArrayList;
 import basicTools.FillCargo;
 import objectDefinitions.CargoSpaceIndividual;
 import objectDefinitions.CargoGenerator;
+import databases.Population;
 import databases.ShapeData;
+import databases.ShapesDefault;
 
 public class FillCargoRandomly extends FillCargo {
 
-	private CargoSpaceIndividual aCargoSpace;
-	private ShapeData shapeLoads;
+	
 
-	public FillCargoRandomly(CargoSpaceIndividual aCargoSpace, ShapeData shapeLoads) {
-		this.aCargoSpace = aCargoSpace;
-		this.shapeLoads = shapeLoads;
+	public FillCargoRandomly() {
+		
 
 	}
+	
+	public Population createRandomPopulation(int populationSize){
+		Population aPopulation= new Population();
+		for(int i=0; i<populationSize;i++){
+			ShapesDefault shapes = new ShapesDefault("default");
+			CargoSpaceIndividual cargoSpace = new CargoSpaceIndividual(5, 32, 8);
+			
+			fillCargoSpaceRandomly(cargoSpace,shapes);
+			aPopulation.addCargoSpaceIndividual(cargoSpace);
+		}
+		
+		return aPopulation;
+	}
 
-	public void fillCargoSpaceRandomly() {
+	public void fillCargoSpaceRandomly(CargoSpaceIndividual aCargoSpace,ShapeData shapeLoads) {
 
 		ArrayList<CargoGenerator> ourShapes = shapeLoads.getShapeList();
 
