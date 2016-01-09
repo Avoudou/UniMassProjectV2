@@ -67,22 +67,29 @@ public class CargoSpace3D extends Basic3DTest {
 
 		List<Model> models = new ArrayList<Model>();
 		instances = new ArrayList<ModelInstance>();
-		Gdx.gl.glEnable(GL20.GL_BLEND);
+		//Gdx.gl.glEnable(GL20.GL_BLEND);
+		ArrayList<Integer> cargoIdList= takeCubesID();
+		ArrayList<Color>   colorIdMatch= fixCargoColor(cargoIdList);
 		for (float x = GRID_MIN; x <= GRID_MAX_Y; x += 1) {
 			for (float y = GRID_MIN; y <= GRID_MAX_X; y += 1) {
 				for (float z = GRID_MIN; z <= GRID_MAX_Z; z += 1) {
 
 					if (cargoSpace.getCargoSpace()[(int) x][(int) y][(int) z] != 0) {
-						if (cargoSpace.getCargoSpace()[(int) x][(int) y][(int) z] % 10 == 1
-								|| cargoSpace.getCargoSpace()[(int) x][(int) y][(int) z] % 10 == 0) {
-							drawCargoCube(modelBuilder, models, x, y, z, new Color(.6f, .7f, .7f, 0.5f));
-						}
-						if (cargoSpace.getCargoSpace()[(int) x][(int) y][(int) z] % 10 == 2) {
-							drawCargoCube(modelBuilder, models, x, y, z, new Color(0.3f, .8f, .6f, 0));
-						}
-						if (cargoSpace.getCargoSpace()[(int) x][(int) y][(int) z] % 10 == 3) {
-							drawCargoCube(modelBuilder, models, x, y, z, new Color(0.9f, .4f, .2f, 0));
-						}
+						
+						drawCargoCube(modelBuilder, models, x, y, z, colorIdMatch.get(findIdIndex(cargoIdList, cargoSpace.getCargoSpace()[(int) x][(int) y][(int) z])));
+						
+//						if (cargoSpace.getCargoSpace()[(int) x][(int) y][(int) z] % 10 == 1
+//								|| cargoSpace.getCargoSpace()[(int) x][(int) y][(int) z] % 10 == 0) {
+//							drawCargoCube(modelBuilder, models, x, y, z, new Color(.6f, .7f, .7f, 0.5f));
+//						}
+//						if (cargoSpace.getCargoSpace()[(int) x][(int) y][(int) z] % 10 == 2) {
+//							drawCargoCube(modelBuilder, models, x, y, z, new Color(0.3f, .8f, .6f, 0));
+//						}
+//						if (cargoSpace.getCargoSpace()[(int) x][(int) y][(int) z] % 10 == 3) {
+//							drawCargoCube(modelBuilder, models, x, y, z, new Color(0.9f, .4f, .2f, 0));
+//						}
+						
+						
 
 					}
 				}
@@ -96,12 +103,12 @@ public class CargoSpace3D extends Basic3DTest {
 		MeshPartBuilder builder;
 		modelBuilder.begin();
 		Material mat = new Material();
-        mat.set(new ColorAttribute(ColorAttribute.Diffuse, 1f, 1f, 1f, 1f));
-        mat.set(new BlendingAttribute(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA, 0.3f));
+		mat.set(new ColorAttribute(ColorAttribute.Diffuse, 1f, 1f, 1f, 1f));
+		mat.set(new BlendingAttribute(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA, 0.3f));
 		builder = modelBuilder.part("grid", GL20.GL_TRIANGLES, Usage.Position | Usage.Normal, new Material(
 				ColorAttribute.createDiffuse(cubeColor)));
 		builder.setColor(Color.GREEN);
-		//builder.box(x, y, z, 1f, 1f, 1f);
+		// builder.box(x, y, z, 1f, 1f, 1f);
 		builder.box(x, y, z, .9f, .9f, .9f);
 		models.add(modelBuilder.end());
 
@@ -110,7 +117,7 @@ public class CargoSpace3D extends Basic3DTest {
 
 	@Override
 	public void render() {
-		
+
 		Gdx.gl.glViewport(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
 		Gdx.gl.glEnable(GL20.GL_BLEND);
@@ -119,6 +126,63 @@ public class CargoSpace3D extends Basic3DTest {
 			modelBatch.render(instance, lights);
 		}
 		modelBatch.end();
+	}
+
+	public ArrayList<Color> fixCargoColor(ArrayList<Integer> cargoIdList) {
+		ArrayList<Color> colorList = new ArrayList<Color>();
+		for (int i = 0; i < cargoIdList.size(); i++) {
+			if (cargoIdList.get(i) % 10 == 0 ||cargoIdList.get(i) % 10 == 1) {
+				colorList.add(new Color(MathUtils.random(0f,0.5f), 0.3f, 0.3f, 0f));
+				
+			}
+			if (cargoIdList.get(i) % 10 == 2) {
+				colorList.add(new Color(MathUtils.random(0f,0.5f), 0.7f, 0.7f, 0f));
+			}
+			if (cargoIdList.get(i) % 10 ==3) {
+				colorList.add(new Color(0.5f, 0.4f, MathUtils.random(0f,0.5f), 0f));
+			}
+		}
+
+		return colorList;
+	}
+
+	public ArrayList<Integer> takeCubesID() {
+		ArrayList<Integer> cargoIds = new ArrayList<Integer>();
+		for (float x = GRID_MIN; x <= GRID_MAX_Y; x += 1) {
+			for (float y = GRID_MIN; y <= GRID_MAX_X; y += 1) {
+				for (float z = GRID_MIN; z <= GRID_MAX_Z; z += 1) {
+					int temp = cargoSpace.getCargoSpace()[(int) x][(int) y][(int) z];
+					if ( !idFoundAlready(temp, cargoIds)) {
+						System.out.println("added id");
+						cargoIds.add(temp);
+					}
+				}
+			}
+		}
+
+		return cargoIds;
+	}
+
+	private int findIdIndex(ArrayList<Integer> idList, int id) {
+		for (int i = 0; i < idList.size(); i++) {
+			if (id == idList.get(i)) {
+				return i;
+			}
+
+		}
+		return 9999999;
+	}
+
+	private boolean idFoundAlready(int id, ArrayList<Integer> aList) {
+		for (int i = 0; i < aList.size(); i++) {
+			if (id == aList.get(i)) {
+				//System.out.println(id);
+				return true;
+			}
+		}
+
+		return false;
+
 	}
 
 }

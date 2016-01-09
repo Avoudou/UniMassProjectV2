@@ -23,7 +23,7 @@ public class RandomAlgorithTest {
 
 	
 		
-		CargoSpaceIndividual bestSolution= randomLoader.createRandomPopulation(100000);
+		CargoSpaceIndividual bestSolution= randomLoader.createRandomPopulation(10000);
 		
 		ShapesDefault shapeList= new ShapesDefault("default");
 		Evaluator evaluator= new Evaluator();

@@ -72,8 +72,7 @@ public class FillCargoRandomly extends FillCargo {
 							if (collisionChecker(i, j, k, shape, aCargoSpace)) {
 								shapePlacer(i, j, k, aCargoSpace, shape);
 								aCargoSpace.setTotalWeight(aCargoSpace.getTotalWeight() + shape.getWeightTotal());
-								ourShapes.get(randomIndex).setShapeIdentity(
-										ourShapes.get(randomIndex).getShapeIdentity() * 10);
+								ourShapes.get(randomIndex).setShapeIdentity(ourShapes.get(randomIndex).getShapeIdentity() +10);
 								// System.out.println(ourShapes.get(randomIndex).getShapeIdentity());
 								somethingPlaced = true;
 							}
