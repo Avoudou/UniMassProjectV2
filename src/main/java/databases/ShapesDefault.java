@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import objectDefinitions.CargoGenerator;
 
-public class ShapesDefault extends ShapeData {
+public class ShapesDefault extends CargoData {
 
 	private CargoGenerator shapeA = new CargoGenerator(2, 4, 2, 2);
 	private CargoGenerator shapeB = new CargoGenerator(3, 4, 2, 3);

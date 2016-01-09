@@ -3,6 +3,8 @@ package runnables;
 import static graphics3D.Constants.screenHeight;
 import static graphics3D.Constants.screenWidth;
 import graphics3D.CargoSpace3D;
+
+import graphicsUI.UIWindow;
 import loadingAlgorithms.FillCargoRandomly;
 import objectDefinitions.CargoSpaceIndividual;
 import basicTools.Evaluator;
@@ -19,7 +21,7 @@ public class RandomAlgorithTest {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		config.width = screenWidth;
 		config.height = screenHeight;
-		FillCargoRandomly randomLoader = new FillCargoRandomly();
+		FillCargoRandomly randomLoader = new FillCargoRandomly(new  CargoSpaceIndividual(5, 33, 8));
 
 	
 		
@@ -37,6 +39,8 @@ public class RandomAlgorithTest {
 		
 		System.out.println("ideal total weight= "+ utopiaWeight);
 		System.out.println("solution's total2 weight  = "+ solutionWeight);
+		
+	//	new UIWindow();
 
 		new LwjglApplication(new CargoSpace3D(bestSolution), config);
 

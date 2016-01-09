@@ -72,14 +72,15 @@ public class CargoSpace3D extends Basic3DTest {
 		ArrayList<Color>   colorIdMatch= fixCargoColor(cargoIdList);
 		
 		Model spaceBoarder= new Model();
-		drawCargoSpace(modelBuilder, spaceBoarder, 2f, 16f, 3.5f, Color.GREEN);
-		for (float x = GRID_MIN; x <= GRID_MAX_Y; x += 1) {
-			for (float y = GRID_MIN; y <= GRID_MAX_X; y += 1) {
+		drawCargoSpace(modelBuilder, spaceBoarder, GRID_MAX_Y/2f, GRID_MAX_X/2f,GRID_MAX_Z/2f, Color.GREEN);
+		//drawCargoSpace(modelBuilder, spaceBoarder, 2f, 16f, 3.5f, Color.GREEN);
+		for (float y = GRID_MIN; y <= GRID_MAX_Y; y += 1) {
+			for (float x = GRID_MIN; x <= GRID_MAX_X; x += 1) {
 				for (float z = GRID_MIN; z <= GRID_MAX_Z; z += 1) {
 
-					if (cargoSpace.getCargoSpace()[(int) x][(int) y][(int) z] != 0) {
+					if (cargoSpace.getCargoSpace()[(int) y][(int) x][(int) z] != 0) {
 						
-						drawCargoCube(modelBuilder, models, x, y, z, colorIdMatch.get(findIdIndex(cargoIdList, cargoSpace.getCargoSpace()[(int) x][(int) y][(int) z])));
+						drawCargoCube(modelBuilder, models, y, x, z, colorIdMatch.get(findIdIndex(cargoIdList, cargoSpace.getCargoSpace()[(int) y][(int) x][(int) z])));
 						
 //						if (cargoSpace.getCargoSpace()[(int) x][(int) y][(int) z] % 10 == 1
 //								|| cargoSpace.getCargoSpace()[(int) x][(int) y][(int) z] % 10 == 0) {
@@ -120,7 +121,7 @@ public class CargoSpace3D extends Basic3DTest {
 		mat.set(new BlendingAttribute(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA, 0.4f));
 		builder = modelBuilder.part("grid", GL20.GL_TRIANGLES, Usage.Position | Usage.Normal, mat);
 		// builder.box(x, y, z, 1f, 1f, 1f);
-		builder.box(x, y, d, 5f, 33f, 8f);
+		builder.box(x, y, d, GRID_MAX_Y+1, GRID_MAX_X+1	, GRID_MAX_Z+1);
 		
 
 		instances.add(new ModelInstance(modelBuilder.end()));

@@ -2,11 +2,11 @@ package basicTools;
 
 import objectDefinitions.CargoSpaceIndividual;
 import databases.Population;
-import databases.ShapeData;
+import databases.CargoData;
 
 public class Evaluator {
 
-	public double getUtopianMaxWeight(CargoSpaceIndividual aCargoSpace, ShapeData cargoList) {
+	public double getUtopianMaxWeight(CargoSpaceIndividual aCargoSpace, CargoData cargoList) {
 
 		return getCargoSpaceVolume(aCargoSpace) * getBestWeightPerUnit(cargoList);
 
@@ -33,7 +33,7 @@ public class Evaluator {
 		return y * x * z;
 	}
 
-	public double getBestWeightPerUnit(ShapeData cargoList) {
+	public double getBestWeightPerUnit(CargoData cargoList) {
 		int listSize = cargoList.getShapeList().size();
 		double maxWeightPerUnit = 0;
 		for (int i = 0; i < listSize; i++) {

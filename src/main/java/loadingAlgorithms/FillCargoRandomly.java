@@ -6,14 +6,22 @@ import basicTools.FillCargo;
 import objectDefinitions.CargoSpaceIndividual;
 import objectDefinitions.CargoGenerator;
 import databases.Population;
-import databases.ShapeData;
+import databases.CargoData;
 import databases.ShapesDefault;
 
 public class FillCargoRandomly extends FillCargo {
+	 private CargoSpaceIndividual cargoSpaceModel;
+	 private int y;
+	 private int x;
+	 private int z;
 
 	
 
-	public FillCargoRandomly() {
+	public FillCargoRandomly(CargoSpaceIndividual cargoSpaceModel) {
+		this.cargoSpaceModel=cargoSpaceModel;
+		y=cargoSpaceModel.getCargoSpace().length;
+		x=cargoSpaceModel.getCargoSpace()[0].length;
+		z=cargoSpaceModel.getCargoSpace()[0][0].length;
 		
 
 	}
@@ -21,7 +29,7 @@ public class FillCargoRandomly extends FillCargo {
 	public CargoSpaceIndividual createRandomPopulation(int populationSize){
 		
 		ShapesDefault shapes = new ShapesDefault("default");
-		CargoSpaceIndividual bestSpace= new CargoSpaceIndividual(5, 33, 8);
+		CargoSpaceIndividual bestSpace= new CargoSpaceIndividual(y, x, z);
 		fillCargoSpaceRandomly(bestSpace,shapes);
 		int bestMaxWeight = bestSpace.getTotalWeight();
 		
@@ -29,7 +37,7 @@ public class FillCargoRandomly extends FillCargo {
 			
 			
 			//System.out.println("population size: "+i);
-			CargoSpaceIndividual tempSpace= new CargoSpaceIndividual(5, 33, 8);
+			CargoSpaceIndividual tempSpace= new CargoSpaceIndividual(y, x, z);
 			fillCargoSpaceRandomly(tempSpace,shapes);
 			int tempWeight=tempSpace.getTotalWeight();
 			if(tempWeight>bestMaxWeight){
@@ -46,7 +54,7 @@ public class FillCargoRandomly extends FillCargo {
 		return bestSpace;
 	}
 
-	public void fillCargoSpaceRandomly(CargoSpaceIndividual aCargoSpace,ShapeData shapeLoads) {
+	public void fillCargoSpaceRandomly(CargoSpaceIndividual aCargoSpace,CargoData shapeLoads) {
 
 		ArrayList<CargoGenerator> ourShapes = shapeLoads.getShapeList();
 
