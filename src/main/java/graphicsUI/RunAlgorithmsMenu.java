@@ -27,58 +27,45 @@ import objectDefinitions.CargoSpaceIndividual;
 public class RunAlgorithmsMenu extends JPanel {
 	private RunTimeData runtimeData;
 
-	  public RunAlgorithmsMenu(RunTimeData runtimeData) {
-		 this.runtimeData=runtimeData;
-		
-			setLayout(new GridLayout(7, 1));
+	public RunAlgorithmsMenu(RunTimeData runtimeData) {
+		this.runtimeData = runtimeData;
+
+		setLayout(new GridLayout(7, 1));
+
+		add(new JLabel("Run Random Algorithm"));
+		JButton startRandomButton = new JButton("RUN");
+		startRandomButton.addActionListener(new StartButtonListener());
+		add(startRandomButton);
+		add(new JLabel("Run Greedy Algorith"));
+
+	}
+
+	class StartButtonListener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
+			config.forceExit = false;
+			config.width = 1000;
+			config.height = 800;
 			
-			add(new JLabel( "Run Random Algorithm"));
-			JButton startRandomButton = new JButton("RUN");
-			startRandomButton.addActionListener(new StartButtonListener());
-			add(startRandomButton);
-			add(new JLabel("Run Greedy Algorith"));
-		
-			
-			
-			
+			FillCargoRandomly randomLoader = new FillCargoRandomly(runtimeData.getACargoSpace());
+
+			CargoSpaceIndividual bestSolution = randomLoader.createRandomPopulation(10000);
+
+			CargoData shapeList = runtimeData.getCargoData();
+			Evaluator evaluator = new Evaluator();
+			double utopiaWeight = evaluator.getUtopianMaxWeight(bestSolution, shapeList);
+			int solutionWeight = bestSolution.getTotalWeight();
+
+			System.out.println("ideal total weight= " + utopiaWeight);
+			System.out.println("solution's total2 weight  = " + solutionWeight);
+
+			// new UIWindow();
+
+			new LwjglApplication(new CargoSpace3D(bestSolution), config);
+
 		}
-		class StartButtonListener implements ActionListener {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-				config.forceExit = false;
-				config.width = screenWidth;
-				config.height = screenHeight;
-				FillCargoRandomly randomLoader = new FillCargoRandomly(runtimeData.getACargoSpace());
-
-			
-				
-				CargoSpaceIndividual bestSolution= randomLoader.createRandomPopulation(10000);
-				
-				CargoData shapeList=runtimeData.getCargoData();
-				Evaluator evaluator= new Evaluator();
-				double  utopiaWeight= evaluator.getUtopianMaxWeight(bestSolution, shapeList);
-				int  solutionWeight= bestSolution.getTotalWeight();
-				
-				
-//				System.out.println(shapeList.getShape(0).getWeightPerUnit());
-//				System.out.println(shapeList.getShape(1).getWeightPerUnit());
-//				System.out.println(shapeList.getShape(2).getWeightPerUnit());
-				
-				System.out.println("ideal total weight= "+ utopiaWeight);
-				System.out.println("solution's total2 weight  = "+ solutionWeight);
-				
-			//	new UIWindow();
-
-				new LwjglApplication(new CargoSpace3D(bestSolution), config);
-
-				
-				
-				
-				}
-			}
-
-		
+	}
 
 }
