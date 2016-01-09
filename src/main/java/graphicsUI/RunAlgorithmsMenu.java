@@ -47,6 +47,7 @@ public class RunAlgorithmsMenu extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
+				config.forceExit = false;
 				config.width = screenWidth;
 				config.height = screenHeight;
 				FillCargoRandomly randomLoader = new FillCargoRandomly(runtimeData.getACargoSpace());
