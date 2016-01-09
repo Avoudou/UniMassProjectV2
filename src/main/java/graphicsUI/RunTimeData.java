@@ -9,7 +9,7 @@ import databases.ShapesDefault;
 @Setter
 public class RunTimeData {
 	
-	private CargoSpaceIndividual aCargoSpace;
+	private CargoSpaceIndividual aCargoSpace = new CargoSpaceIndividual(5, 33, 8);
 	private CargoData cargoData = new ShapesDefault("weight");
 	
 

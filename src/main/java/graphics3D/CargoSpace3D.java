@@ -99,8 +99,7 @@ public class CargoSpace3D extends Basic3DTest {
 				}
 			}
 		}
-		System.out.println("Done");
-
+		
 	}
 
 	private void drawCargoCube(ModelBuilder modelBuilder, List<Model> models, float x, float y, float z, Color cubeColor) {
@@ -168,7 +167,7 @@ public class CargoSpace3D extends Basic3DTest {
 				for (float z = GRID_MIN; z <= GRID_MAX_Z; z += 1) {
 					int temp = cargoSpace.getCargoSpace()[(int) x][(int) y][(int) z];
 					if ( !idFoundAlready(temp, cargoIds)) {
-						System.out.println("added id");
+					//	System.out.println("added id");
 						cargoIds.add(temp);
 					}
 				}
