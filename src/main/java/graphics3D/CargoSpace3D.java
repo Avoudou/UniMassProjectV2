@@ -70,6 +70,9 @@ public class CargoSpace3D extends Basic3DTest {
 		//Gdx.gl.glEnable(GL20.GL_BLEND);
 		ArrayList<Integer> cargoIdList= takeCubesID();
 		ArrayList<Color>   colorIdMatch= fixCargoColor(cargoIdList);
+		
+		Model spaceBoarder= new Model();
+		drawCargoSpace(modelBuilder, spaceBoarder, 2f, 16f, 3.5f, Color.GREEN);
 		for (float x = GRID_MIN; x <= GRID_MAX_Y; x += 1) {
 			for (float y = GRID_MIN; y <= GRID_MAX_X; y += 1) {
 				for (float z = GRID_MIN; z <= GRID_MAX_Z; z += 1) {
@@ -102,25 +105,36 @@ public class CargoSpace3D extends Basic3DTest {
 	private void drawCargoCube(ModelBuilder modelBuilder, List<Model> models, float x, float y, float z, Color cubeColor) {
 		MeshPartBuilder builder;
 		modelBuilder.begin();
-		Material mat = new Material();
-		mat.set(new ColorAttribute(ColorAttribute.Diffuse, 1f, 1f, 1f, 1f));
-		mat.set(new BlendingAttribute(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA, 0.3f));
-		builder = modelBuilder.part("grid", GL20.GL_TRIANGLES, Usage.Position | Usage.Normal, new Material(
-				ColorAttribute.createDiffuse(cubeColor)));
-		builder.setColor(Color.GREEN);
+		builder = modelBuilder.part("grid", GL20.GL_TRIANGLES, Usage.Position | Usage.Normal, new Material(ColorAttribute.createDiffuse(cubeColor)));
 		// builder.box(x, y, z, 1f, 1f, 1f);
 		builder.box(x, y, z, .9f, .9f, .9f);
 		models.add(modelBuilder.end());
 
 		instances.add(new ModelInstance(models.get(models.size() - 1)));
 	}
+	private void drawCargoSpace(ModelBuilder modelBuilder, Model model, float x, float y, float d, Color cubeColor) {
+		MeshPartBuilder builder;
+		modelBuilder.begin();
+		Material mat = new Material();
+		mat.set(new ColorAttribute(ColorAttribute.Diffuse, .8f, 0.4f, .4f, 1f));
+		mat.set(new BlendingAttribute(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA, 0.4f));
+		builder = modelBuilder.part("grid", GL20.GL_TRIANGLES, Usage.Position | Usage.Normal, mat);
+		// builder.box(x, y, z, 1f, 1f, 1f);
+		builder.box(x, y, d, 5f, 33f, 8f);
+		
+
+		instances.add(new ModelInstance(modelBuilder.end()));
+	}
 
 	@Override
 	public void render() {
-
+		Gdx.gl.glEnable(GL20.GL_BLEND);
+		Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
+		
+		
 		Gdx.gl.glViewport(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
-		Gdx.gl.glEnable(GL20.GL_BLEND);
+		
 		modelBatch.begin(cam);
 		for (ModelInstance instance : instances) {
 			modelBatch.render(instance, lights);
