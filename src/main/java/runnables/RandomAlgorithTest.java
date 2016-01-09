@@ -21,7 +21,7 @@ public class RandomAlgorithTest {
 		config.height = screenHeight;
 		FillCargoRandomly randomLoader = new FillCargoRandomly();
 
-		Population cargoList = randomLoader.createRandomPopulation(10000);
+		Population cargoList = randomLoader.createRandomPopulation(100000);
 		Evaluator evaluator = new Evaluator();
 		CargoSpaceIndividual bestSolution= evaluator.findBestCargoSpace(cargoList);
 		

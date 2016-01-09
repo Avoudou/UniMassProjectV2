@@ -5,6 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.*;
 import com.badlogic.gdx.graphics.VertexAttributes.Usage;
 import com.badlogic.gdx.graphics.g3d.*;
+import com.badlogic.gdx.graphics.g3d.attributes.BlendingAttribute;
 import com.badlogic.gdx.graphics.g3d.attributes.ColorAttribute;
 import com.badlogic.gdx.graphics.g3d.environment.DirectionalLight;
 import com.badlogic.gdx.graphics.g3d.utils.ModelBuilder;
@@ -74,7 +75,7 @@ public class CargoSpace3D extends Basic3DTest {
 					if (cargoSpace.getCargoSpace()[(int) x][(int) y][(int) z] != 0) {
 						if (cargoSpace.getCargoSpace()[(int) x][(int) y][(int) z] % 10 == 1
 								|| cargoSpace.getCargoSpace()[(int) x][(int) y][(int) z] % 10 == 0) {
-							drawCargoCube(modelBuilder, models, x, y, z, new Color(MathUtils.random(0.5f,1), .7f, .7f, 0.5f));
+							drawCargoCube(modelBuilder, models, x, y, z, new Color(.6f, .7f, .7f, 0.5f));
 						}
 						if (cargoSpace.getCargoSpace()[(int) x][(int) y][(int) z] % 10 == 2) {
 							drawCargoCube(modelBuilder, models, x, y, z, new Color(0.3f, .8f, .6f, 0));
@@ -94,10 +95,14 @@ public class CargoSpace3D extends Basic3DTest {
 	private void drawCargoCube(ModelBuilder modelBuilder, List<Model> models, float x, float y, float z, Color cubeColor) {
 		MeshPartBuilder builder;
 		modelBuilder.begin();
+		Material mat = new Material();
+        mat.set(new ColorAttribute(ColorAttribute.Diffuse, 1f, 1f, 1f, 1f));
+        mat.set(new BlendingAttribute(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA, 0.3f));
 		builder = modelBuilder.part("grid", GL20.GL_TRIANGLES, Usage.Position | Usage.Normal, new Material(
 				ColorAttribute.createDiffuse(cubeColor)));
 		builder.setColor(Color.GREEN);
-		builder.box(x, y, z, .9f, .9f, .9f);
+		builder.box(x, y, z, 1f, 1f, 1f);
+		//builder.box(x, y, z, .9f, .9f, .9f);
 		models.add(modelBuilder.end());
 
 		instances.add(new ModelInstance(models.get(models.size() - 1)));
