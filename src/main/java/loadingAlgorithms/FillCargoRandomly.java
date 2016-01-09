@@ -18,19 +18,32 @@ public class FillCargoRandomly extends FillCargo {
 
 	}
 	
-	public Population createRandomPopulation(int populationSize){
-		Population aPopulation= new Population();
+	public CargoSpaceIndividual createRandomPopulation(int populationSize){
+		
+		ShapesDefault shapes = new ShapesDefault("default");
+		CargoSpaceIndividual bestSpace= new CargoSpaceIndividual(5, 33, 8);
+		fillCargoSpaceRandomly(bestSpace,shapes);
+		int bestMaxWeight = bestSpace.getTotalWeight();
+		
 		for(int i=0; i<populationSize;i++){
-			if(i%10000==0)
-				System.out.println("population size: "+i);
-			ShapesDefault shapes = new ShapesDefault("default");
-			CargoSpaceIndividual cargoSpace = new CargoSpaceIndividual(5, 33, 8);
 			
-			fillCargoSpaceRandomly(cargoSpace,shapes);
-			aPopulation.addCargoSpaceIndividual(cargoSpace);
+			
+			//System.out.println("population size: "+i);
+			CargoSpaceIndividual tempSpace= new CargoSpaceIndividual(5, 33, 8);
+			fillCargoSpaceRandomly(tempSpace,shapes);
+			int tempWeight=tempSpace.getTotalWeight();
+			if(tempWeight>bestMaxWeight){
+				bestSpace=tempSpace;
+				bestMaxWeight= tempWeight;
+				System.out.println("weight of best solution found : "+ bestMaxWeight );
+			}
+			
+			
+			
+		
 		}
 		
-		return aPopulation;
+		return bestSpace;
 	}
 
 	public void fillCargoSpaceRandomly(CargoSpaceIndividual aCargoSpace,ShapeData shapeLoads) {
