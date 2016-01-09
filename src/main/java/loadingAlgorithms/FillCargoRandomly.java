@@ -21,6 +21,8 @@ public class FillCargoRandomly extends FillCargo {
 	public Population createRandomPopulation(int populationSize){
 		Population aPopulation= new Population();
 		for(int i=0; i<populationSize;i++){
+			if(i%10000==0)
+				System.out.println("population size: "+i);
 			ShapesDefault shapes = new ShapesDefault("default");
 			CargoSpaceIndividual cargoSpace = new CargoSpaceIndividual(5, 33, 8);
 			

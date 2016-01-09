@@ -31,9 +31,9 @@ public class RandomAlgorithTest {
 		int  solutionWeight= bestSolution.getTotalWeight();
 		
 		
-		System.out.println(shapeList.getShape(0).getWeightPerUnit());
-		System.out.println(shapeList.getShape(1).getWeightPerUnit());
-		System.out.println(shapeList.getShape(2).getWeightPerUnit());
+//		System.out.println(shapeList.getShape(0).getWeightPerUnit());
+//		System.out.println(shapeList.getShape(1).getWeightPerUnit());
+//		System.out.println(shapeList.getShape(2).getWeightPerUnit());
 		
 		System.out.println("ideal weight= "+ utopiaWeight);
 		System.out.println("solutions weight total = "+ solutionWeight);

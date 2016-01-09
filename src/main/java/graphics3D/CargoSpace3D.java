@@ -101,8 +101,8 @@ public class CargoSpace3D extends Basic3DTest {
 		builder = modelBuilder.part("grid", GL20.GL_TRIANGLES, Usage.Position | Usage.Normal, new Material(
 				ColorAttribute.createDiffuse(cubeColor)));
 		builder.setColor(Color.GREEN);
-		builder.box(x, y, z, 1f, 1f, 1f);
-		//builder.box(x, y, z, .9f, .9f, .9f);
+		//builder.box(x, y, z, 1f, 1f, 1f);
+		builder.box(x, y, z, .9f, .9f, .9f);
 		models.add(modelBuilder.end());
 
 		instances.add(new ModelInstance(models.get(models.size() - 1)));
