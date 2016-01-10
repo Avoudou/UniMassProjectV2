@@ -13,7 +13,7 @@ public class FillCargo {
 		for (int i = 0; i < shape.getShape().length; i++) {
 			for (int j = 0; j < shape.getShape()[i].length; j++) {
 				for (int k = 0; k < shape.getShape()[i][j].length; k++) {
-					space[y + i][x + j][z + k] = shape.getShape()[i][j][k];
+					space[y + i][x + j][z + k] = shape.getShapeIdentity();
 				}
 			}
 		}

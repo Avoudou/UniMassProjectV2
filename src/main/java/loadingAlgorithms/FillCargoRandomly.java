@@ -81,7 +81,7 @@ public class FillCargoRandomly extends FillCargo {
 								shapePlacer(i, j, k, aCargoSpace, shape);
 								aCargoSpace.setTotalWeight(aCargoSpace.getTotalWeight() + shape.getWeightTotal());
 								ourShapes.get(randomIndex).setShapeIdentity(ourShapes.get(randomIndex).getShapeIdentity() +10);
-								// System.out.println(ourShapes.get(randomIndex).getShapeIdentity());
+							//	System.out.println(ourShapes.get(randomIndex).getShapeIdentity());
 								somethingPlaced = true;
 							}
 

@@ -163,10 +163,10 @@ public class CargoSpace3D extends Basic3DTest {
 
 	public ArrayList<Integer> takeCubesID() {
 		ArrayList<Integer> cargoIds = new ArrayList<Integer>();
-		for (float x = GRID_MIN; x <= GRID_MAX_Y; x += 1) {
-			for (float y = GRID_MIN; y <= GRID_MAX_X; y += 1) {
-				for (float z = GRID_MIN; z <= GRID_MAX_Z; z += 1) {
-					int temp = cargoSpace.getCargoSpace()[(int) x][(int) y][(int) z];
+		for (int x = GRID_MIN; x <= GRID_MAX_Y; x += 1) {
+			for (int y = GRID_MIN; y <= GRID_MAX_X; y += 1) {
+				for (int z = GRID_MIN; z <= GRID_MAX_Z; z += 1) {
+					int temp = cargoSpace.getCargoSpace()[ x][y][z];
 					if ( !idFoundAlready(temp, cargoIds)) {
 					//	System.out.println("added id");
 						cargoIds.add(temp);

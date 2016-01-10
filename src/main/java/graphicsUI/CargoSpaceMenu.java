@@ -24,6 +24,7 @@ public class CargoSpaceMenu extends JPanel{
 		String spaces = "   ";
 		add(new JLabel(spaces + "Y Space size ="));
 		yInput = new JTextField();
+		
 		add(yInput);
 		add(new JLabel(spaces + "X Space size ="));
 		xInput = new JTextField();
