@@ -19,7 +19,7 @@ import objectDefinitions.CargoSpaceIndividual;
 public class CargoSetsMenu  extends JPanel{
 	private RunTimeData runtimeData;
 	ImageIcon cargoA= new ImageIcon("Textures/ShapeSample.jpg");
-	ImageIcon cargoBnew =new ImageIcon("Textures/ShapeSample.jpg");
+	ImageIcon cargoB =new ImageIcon("Textures/ShapeSample.jpg");
 	ImageIcon cargoC=new ImageIcon("Textures/ShapeSample.jpg");
 	
 
@@ -28,13 +28,17 @@ public class CargoSetsMenu  extends JPanel{
 		
 		 	setLayout(new GridLayout(1, 6));
 			
-			JButton defaultSetButton = new JButton("Set Default Cargo");
-			JButton pentominoSetButton = new JButton("Set Pentomino Cargo");
+			JButton defaultSetButton = new JButton("Default Cargo");
+			JButton pentominoSetButton = new JButton("Pentomino Cargo");
 			defaultSetButton.addActionListener(new DefaultButtonListener());
 			defaultSetButton.addActionListener(new PentominosButtonListener());
+			add(  new JLabel("        "));
+			add( new JLabel("  Set Cargo Set :  "));
 			add(defaultSetButton);
 			add(pentominoSetButton);
-			//add( cargoA);
+			add( new JLabel("         "));
+			add( new JLabel("        "));
+		
 			
 		}
 		class DefaultButtonListener implements ActionListener {

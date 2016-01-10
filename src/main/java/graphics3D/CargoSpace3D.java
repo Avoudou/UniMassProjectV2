@@ -50,6 +50,7 @@ public class CargoSpace3D extends Basic3DTest {
 
 	@Override
 	public void create() {
+		Gdx.graphics.setDisplayMode(1000, 800, false);
 		lights = new Environment();
 		lights.set(new ColorAttribute(ColorAttribute.AmbientLight, 0.4f, 0.4f, 0.4f, 1f));
 		lights.add(new DirectionalLight().set(0.8f, 0.8f, 0.8f, -1f, -0.8f, -0.2f));
