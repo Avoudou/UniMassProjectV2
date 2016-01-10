@@ -192,12 +192,18 @@ setCustomCargoC(280,0,setShapeC);
 			yCargoA = Integer.parseInt(shapeAY.getText());
 			xCargoA = Integer.parseInt(shapeAX.getText());
 			zCargoA = Integer.parseInt(shapeAZ.getText());
-				
-						
+			//	System.out.println(yCargoA);
+		
 				}
 			runtimeData.getCargoData().getShapeList().remove(0);
-			runtimeData.getCargoData().getShapeList().add(0,new CargoGenerator(yCargoA, xCargoA, zCargoA, 1));
+			CargoGenerator newCargo= new CargoGenerator(yCargoA, xCargoA, zCargoA, 1);
+			
+			newCargo.setWeightTotal(runtimeData.getWeightCargoA());
+			System.out.println(newCargo.getShape().length);
+			runtimeData.getCargoData().getShapeList().add(0,newCargo);
 				
+						
+			
 			}
 		}
 	class SetCargoBButton implements ActionListener {
@@ -213,7 +219,9 @@ setCustomCargoC(280,0,setShapeC);
 						
 				}
 			runtimeData.getCargoData().getShapeList().remove(1);
-			runtimeData.getCargoData().getShapeList().add(1,new CargoGenerator(yCargoB, xCargoB, zCargoB, 1));
+			CargoGenerator newCargo= new CargoGenerator(yCargoB, xCargoB, zCargoB, 2);
+			newCargo.setWeightTotal(runtimeData.getWeightCargoB());
+			runtimeData.getCargoData().getShapeList().add(1,newCargo);
 				
 			}
 		}
@@ -230,8 +238,9 @@ setCustomCargoC(280,0,setShapeC);
 						
 				}
 			runtimeData.getCargoData().getShapeList().remove(2);
-			runtimeData.getCargoData().getShapeList().add(2,new CargoGenerator(yCargoC, xCargoC, zCargoC, 1));
-				
+			CargoGenerator newCargo= new CargoGenerator(yCargoC, xCargoC, zCargoC, 3);
+			newCargo.setWeightTotal(runtimeData.getWeightCargoC());
+			runtimeData.getCargoData().getShapeList().add(2,newCargo);
 			}
 		}
 
