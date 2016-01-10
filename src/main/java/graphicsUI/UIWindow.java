@@ -27,7 +27,7 @@ public class UIWindow extends JFrame{
 		add(new CargoSpaceMenu(this.runtimeData), BorderLayout.SOUTH);
 		add(new RunAlgorithmsMenu(this.runtimeData), BorderLayout.WEST);
 		add(new CargoSetsMenu(this.runtimeData),BorderLayout.NORTH);
-		add (new CargoSetWeightsPanel(), BorderLayout.CENTER);
+		add (new CargoSetWeightsPanel(this.runtimeData), BorderLayout.CENTER);
 
 		setVisible(true);
 
