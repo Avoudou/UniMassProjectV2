@@ -20,6 +20,7 @@ public class CargoSetWeightsPanel extends JPanel {
 	private JLabel cargoALabel= new  JLabel("Cargo A weight");
 	private JLabel cargoBLabel= new  JLabel("Cargo B weight");
 	private JLabel cargoCLabel= new  JLabel("Cargo C weight");
+	JButton setWeightsButton = new JButton("Set Weights");
 	private JTextField weightCargoA;
 	private JTextField weightCargoB;
 	private JTextField weightCargoC;
@@ -50,7 +51,7 @@ public class CargoSetWeightsPanel extends JPanel {
 		add(weightCargoC);
 		add(cargoCLabel);
 		
-		JButton setWeightsButton = new JButton("Set Weights");
+		
 		setWeightsButton.addActionListener(new StartButtonListener());
 		setWeightsButton.setBounds(500, 125, 160, 30);
 		add(setWeightsButton);
