@@ -33,10 +33,10 @@ public class CargoSpaceMenu extends JPanel{
 		zInput = new JTextField();
 		add(zInput);
 		JButton startButton = new JButton("Set Space");
-		startButton.addActionListener(new StartButtonListener());
+		startButton.addActionListener(new CargoSpaceButtonListener());
 		add(startButton);
 	}
-	class StartButtonListener implements ActionListener {
+	class CargoSpaceButtonListener implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {

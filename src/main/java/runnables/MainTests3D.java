@@ -20,9 +20,9 @@ public class MainTests3D {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		config.width = screenWidth;
 		config.height = screenHeight;
-		 CargoGenerator shape = new CargoGenerator (2, 2, 4, 1);
-		 CargoGenerator shape1 = new CargoGenerator(3, 3, 3, 3);
-		 CargoGenerator shape2 = new CargoGenerator(2, 3, 4, 2);
+		 CargoGenerator shape = new CargoGenerator (2, 4, 2, 1);
+		 CargoGenerator shape1 = new CargoGenerator(3, 4, 2, 3);
+		 CargoGenerator shape2 = new CargoGenerator(3, 3, 3, 2);
 		
 		 CargoSpaceIndividual cargoSpace = new CargoSpaceIndividual(6, 6, 6);
 		 FillCargo cargoLoader = new FillCargo();
@@ -34,8 +34,8 @@ public class MainTests3D {
 		
 		
 		
-		 new LwjglApplication(new CargoSpace3D(cargoSpace), config);
-		// new LwjglApplication(new Shape3D(new ShapesDefault().getShape(2)), config);
+		// new LwjglApplication(new CargoSpace3D(cargoSpace), config);
+		 new LwjglApplication(new Shape3D(new ShapesDefault().getShape(2)), config);
 
 		
 

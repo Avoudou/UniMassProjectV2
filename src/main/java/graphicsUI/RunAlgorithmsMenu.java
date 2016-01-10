@@ -3,7 +3,7 @@ package graphicsUI;
 import static graphics3D.Constants.screenHeight;
 import static graphics3D.Constants.screenWidth;
 import graphics3D.CargoSpace3D;
-import graphicsUI.CargoSpaceMenu.StartButtonListener;
+
 
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -34,13 +34,13 @@ public class RunAlgorithmsMenu extends JPanel {
 
 		add(new JLabel("Run Random Algorithm"));
 		JButton startRandomButton = new JButton("RUN");
-		startRandomButton.addActionListener(new StartButtonListener());
+		startRandomButton.addActionListener(new RunRandomButtonListener());
 		add(startRandomButton);
 		add(new JLabel("Run Greedy Algorith"));
 
 	}
 
-	class StartButtonListener implements ActionListener {
+	class RunRandomButtonListener implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {

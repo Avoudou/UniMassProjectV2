@@ -1,6 +1,5 @@
 package graphicsUI;
 
-import graphicsUI.CargoSpaceMenu.StartButtonListener;
 
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
@@ -16,7 +15,9 @@ import objectDefinitions.CargoSpaceIndividual;
 import lombok.AllArgsConstructor;
 
 public class CargoSetWeightsPanel extends JPanel {
-	private ImageIcon image = new ImageIcon("Textures/CargoSample.jpg");
+	private ImageIcon imageA = new ImageIcon("Textures/DefaultA.jpg");
+	private ImageIcon imageB = new ImageIcon("Textures/DefaultB.jpg");
+	private ImageIcon imageC = new ImageIcon("Textures/DefaultC.jpg");
 	private JLabel cargoALabel= new  JLabel("Cargo A weight");
 	private JLabel cargoBLabel= new  JLabel("Cargo B weight");
 	private JLabel cargoCLabel= new  JLabel("Cargo C weight");
@@ -29,9 +30,9 @@ public class CargoSetWeightsPanel extends JPanel {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 
-		g.drawImage(image.getImage(), 75, 0, 125, 125, null);
-		g.drawImage(image.getImage(), 200, 0, 125, 125, null);
-		g.drawImage(image.getImage(), 325, 0, 125, 125, null);
+		g.drawImage(imageA.getImage(), 75, 0, 125, 125, null);
+		g.drawImage(imageB.getImage(), 200, 0, 125, 125, null);
+		g.drawImage(imageC.getImage(), 325, 0, 125, 125, null);
 
 		weightCargoA = new JTextField();
 		weightCargoA.setBounds(115, 130, 50, 20);
@@ -52,11 +53,11 @@ public class CargoSetWeightsPanel extends JPanel {
 		add(cargoCLabel);
 		
 		
-		setWeightsButton.addActionListener(new StartButtonListener());
+		setWeightsButton.addActionListener(new WeightButtonListener());
 		setWeightsButton.setBounds(500, 125, 160, 30);
 		add(setWeightsButton);
 	}
-	class StartButtonListener implements ActionListener {
+	class WeightButtonListener implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {

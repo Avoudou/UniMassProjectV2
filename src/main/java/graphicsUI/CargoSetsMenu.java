@@ -1,6 +1,6 @@
 package graphicsUI;
 
-import graphicsUI.CargoSpaceMenu.StartButtonListener;
+
 
 import java.awt.Component;
 import java.awt.GridLayout;
@@ -30,8 +30,8 @@ public class CargoSetsMenu  extends JPanel{
 			
 			JButton defaultSetButton = new JButton("Default Cargo");
 			JButton pentominoSetButton = new JButton("Pentomino Cargo");
-			defaultSetButton.addActionListener(new DefaultButtonListener());
-			defaultSetButton.addActionListener(new PentominosButtonListener());
+			defaultSetButton.addActionListener(new DefaultCargoButtonListener());
+			defaultSetButton.addActionListener(new PentominoCargoButtonListener());
 			add(  new JLabel("        "));
 			add( new JLabel("  Set Cargo Set :  "));
 			add(defaultSetButton);
@@ -41,7 +41,7 @@ public class CargoSetsMenu  extends JPanel{
 		
 			
 		}
-		class DefaultButtonListener implements ActionListener {
+		class DefaultCargoButtonListener implements ActionListener {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -49,7 +49,7 @@ public class CargoSetsMenu  extends JPanel{
 					
 				}
 			}
-		class PentominosButtonListener implements ActionListener {
+		class PentominoCargoButtonListener implements ActionListener {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
