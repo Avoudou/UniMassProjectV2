@@ -24,9 +24,10 @@ public class UIWindow extends JFrame{
 		
 		add(new CargoSpaceMenu(this.runtimeData), BorderLayout.SOUTH);
 		add(new RunAlgorithmsMenu(this.runtimeData), BorderLayout.WEST);
-		CargoSetWeightsPanel centerPanel = new CargoSetWeightsPanel(this.runtimeData);
-		add(centerPanel, BorderLayout.CENTER);
-		add(new CargoSetsMenu(this.runtimeData, centerPanel), BorderLayout.NORTH);
+		CargoSetCustomPanel customShapes = new CargoSetCustomPanel(this.runtimeData);
+		add(new CargoSetsMenu(this.runtimeData, customShapes), BorderLayout.NORTH);
+		add(new CargoSetWeightsPanel(runtimeData), BorderLayout.CENTER);
+		add(customShapes, BorderLayout.CENTER);
 
 		setVisible(true);
 
@@ -35,5 +36,6 @@ public class UIWindow extends JFrame{
 	
 	
 	
+
 
 }

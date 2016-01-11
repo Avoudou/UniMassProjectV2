@@ -16,9 +16,9 @@ public class CargoSetsMenu  extends JPanel{
 	private JButton defaultSetButton = new JButton("Default Cargo");
 	private JButton pentominoSetButton = new JButton("Pentomino Cargo");
 	private JButton customSetButton = new JButton("Custom Cargo");
-	private CargoSetWeightsPanel mainPanel;
+	private CargoSetCustomPanel mainPanel;
 
-	public CargoSetsMenu(RunTimeData runtimeData, CargoSetWeightsPanel mainPanel) {
+	public CargoSetsMenu(RunTimeData runtimeData, CargoSetCustomPanel mainPanel) {
 		 this.runtimeData=runtimeData;
 		this.mainPanel = mainPanel;
 		 	setLayout(new GridLayout(1, 6));
