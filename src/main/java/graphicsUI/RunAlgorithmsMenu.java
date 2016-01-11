@@ -47,7 +47,7 @@ public class RunAlgorithmsMenu extends JPanel {
 
 			FillCargoRandomly randomLoader = new FillCargoRandomly(runtimeData);
 
-			CargoSpaceIndividual bestSolution = randomLoader.createRandomPopulation(100000);
+			CargoSpaceIndividual bestSolution = randomLoader.createRandomPopulation(10000);
 
 			CargoData shapeList = runtimeData.getCargoData();
 			Evaluator evaluator = new Evaluator();
