@@ -102,6 +102,7 @@ public class CargoSpace3D extends Basic3DTest {
 		
 
 		instances.add(new ModelInstance(modelBuilder.end()));
+		instances.add(new ModelInstance(modelBuilder.end()));
 	}
 
 	@Override

@@ -12,8 +12,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import objectDefinitions.CargoGenerator;
-import objectDefinitions.CargoSpaceIndividual;
-import lombok.AllArgsConstructor;
 
 public class CargoSetWeightsPanel extends JPanel {
 	private ImageIcon imageA = new ImageIcon("Textures/DefaultA.jpg");
@@ -56,26 +54,28 @@ public class CargoSetWeightsPanel extends JPanel {
 	private JLabel shapeCYlabel= new  JLabel("Xcoord");
 	private JLabel shapeCXlabel= new  JLabel("Y coord");
 	private JLabel shapeCZlabel= new  JLabel("Z coord");
-	private boolean shapesSet= false;
+
 	private RunTimeData runtimeData;
 	
 	
-	public CargoSetWeightsPanel( RunTimeData runtimeData) {
-		this.runtimeData=runtimeData;
+	public CargoSetWeightsPanel(RunTimeData runtimeData) {
+		this.runtimeData = runtimeData;
 	}
 
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-if(shapesSet){
-		g.drawImage(imageA.getImage(), 75, 0, 125, 125, null);
-		g.drawImage(imageB.getImage(), 200, 0, 125, 125, null);
-		g.drawImage(imageC.getImage(), 325, 0, 125, 125, null);
-}
-setCustomCargoA(0,0,setShapeA);
-setCustomCargoB(140,0,setShapeB);
-setCustomCargoC(280,0,setShapeC);
-	setWeightFields();
+		if (runtimeData.isDefaultCargoSet()) {
+			g.drawImage(imageA.getImage(), 75, 0, 125, 125, null);
+			g.drawImage(imageB.getImage(), 200, 0, 125, 125, null);
+			g.drawImage(imageC.getImage(), 325, 0, 125, 125, null);
+		}
+		if (runtimeData.isCustomCargoSet()) {
+			setCustomCargoA(0, 0, setShapeA);
+			setCustomCargoB(140, 0, setShapeB);
+			setCustomCargoC(280, 0, setShapeC);
+		}
+		setWeightFields();
 	}
 	private void setWeightFields() {
 		
@@ -243,6 +243,11 @@ setCustomCargoC(280,0,setShapeC);
 			runtimeData.getCargoData().getShapeList().add(2,newCargo);
 			}
 		}
+
+	@SuppressWarnings("deprecation")
+	public void closeCustomCargoMenu() {
+		shapeAX.disable();
+	}
 
 	}
 	

@@ -6,8 +6,6 @@ import javax.swing.JFrame;
 
 import lombok.Getter;
 import lombok.Setter;
-import databases.CargoData;
-import objectDefinitions.CargoSpaceIndividual;
 
 @Getter
 @Setter
@@ -26,8 +24,9 @@ public class UIWindow extends JFrame{
 		
 		add(new CargoSpaceMenu(this.runtimeData), BorderLayout.SOUTH);
 		add(new RunAlgorithmsMenu(this.runtimeData), BorderLayout.WEST);
-		add(new CargoSetsMenu(this.runtimeData),BorderLayout.NORTH);
-		add (new CargoSetWeightsPanel(this.runtimeData), BorderLayout.CENTER);
+		CargoSetWeightsPanel centerPanel = new CargoSetWeightsPanel(this.runtimeData);
+		add(centerPanel, BorderLayout.CENTER);
+		add(new CargoSetsMenu(this.runtimeData, centerPanel), BorderLayout.NORTH);
 
 		setVisible(true);
 
