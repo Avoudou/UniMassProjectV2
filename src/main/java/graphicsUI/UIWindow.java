@@ -26,8 +26,10 @@ public class UIWindow extends JFrame{
 		add(new RunAlgorithmsMenu(this.runtimeData), BorderLayout.WEST);
 		CargoSetCustomPanel customShapes = new CargoSetCustomPanel(this.runtimeData);
 		add(new CargoSetsMenu(this.runtimeData, customShapes), BorderLayout.NORTH);
-		add(new CargoSetWeightsPanel(runtimeData), BorderLayout.CENTER);
-		add(customShapes, BorderLayout.CENTER);
+
+		add(new CentralPanel(runtimeData, this), BorderLayout.CENTER);
+		// add(new CargoSetWeightsPanel(runtimeData), BorderLayout.CENTER);
+		// add(customShapes, BorderLayout.CENTER);
 
 		setVisible(true);
 
