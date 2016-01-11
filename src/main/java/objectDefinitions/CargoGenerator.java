@@ -45,4 +45,19 @@ public class CargoGenerator {
 		
 	}
 
+	public double getWeightPerUnit() {
+		
+		return weightPerUnit;
+	}
+
+	public void setShapeIdentity(int i) {
+		shapeIdentity= i;
+		
+	}
+
+	public int getWeightTotal() {
+		// TODO Auto-generated method stub
+		return weightTotal;
+	}
+
 }

@@ -27,6 +27,18 @@ public class CargoSpaceIndividual {
 		cargoSpace= space;
 		
 	}
+
+	public int getTotalWeight() {
+		// TODO Auto-generated method stub
+		return totalWeight;
+	}
+
+	public void setTotalWeight(int i) {
+	totalWeight=i;
+		
+	}
+
+	
 	
 
 }

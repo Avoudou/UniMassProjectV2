@@ -31,4 +31,44 @@ public class RunTimeData {
 		customCargoSet = aBoolean;
 	}
 
+	public CargoData getCargoData() {
+		
+		return cargoData;
+	}
+
+	public void setACargoSpace(CargoSpaceIndividual cargoSpaceIndividual) {
+		aCargoSpace = cargoSpaceIndividual;
+		
+	}
+
+	public boolean isCustomCargoSet() {
+		// TODO Auto-generated method stub
+		return customCargoSet;
+	}
+
+	public CargoSpaceIndividual getACargoSpace() {
+		
+		return aCargoSpace;
+	}
+
+	public boolean isDefaultCargoSet() {
+		// TODO Auto-generated method stub
+		return defaultCargoSet;
+	}
+
+	public int getWeightCargoA() {
+		// TODO Auto-generated method stub
+		return weightCargoA;
+	}
+
+	public int getWeightCargoB() {
+		// TODO Auto-generated method stub
+		return weightCargoB;
+	}
+
+	public int getWeightCargoC() {
+		// TODO Auto-generated method stub
+		return weightCargoC;
+	}
+
 }
