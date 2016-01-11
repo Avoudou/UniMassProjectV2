@@ -58,13 +58,13 @@ public class CargoSpace3D extends Basic3DTest {
 
 		List<Model> models = new ArrayList<Model>();
 		instances = new ArrayList<ModelInstance>();
-		//Gdx.gl.glEnable(GL20.GL_BLEND);
+		// Gdx.gl.glEnable(GL20.GL_BLEND);
 		ArrayList<Integer> cargoIdList= takeCubesID();
 		ArrayList<Color>   colorIdMatch= fixCargoColor(cargoIdList);
 		
 		Model spaceBoarder= new Model();
 		drawCargoSpace(modelBuilder, spaceBoarder, GRID_MAX_Y/2f, GRID_MAX_X/2f,GRID_MAX_Z/2f, Color.GREEN);
-		//drawCargoSpace(modelBuilder, spaceBoarder, 2f, 16f, 3.5f, Color.GREEN);
+
 		for (float y = GRID_MIN; y <= GRID_MAX_Y; y += 1) {
 			for (float x = GRID_MIN; x <= GRID_MAX_X; x += 1) {
 				for (float z = GRID_MIN; z <= GRID_MAX_Z; z += 1) {
@@ -102,7 +102,7 @@ public class CargoSpace3D extends Basic3DTest {
 		
 
 		instances.add(new ModelInstance(modelBuilder.end()));
-		instances.add(new ModelInstance(modelBuilder.end()));
+		// instances.add(new ModelInstance(modelBuilder.end()));
 	}
 
 	@Override

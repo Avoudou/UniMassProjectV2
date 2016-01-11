@@ -244,10 +244,7 @@ public class CargoSetWeightsPanel extends JPanel {
 			}
 		}
 
-	@SuppressWarnings("deprecation")
-	public void closeCustomCargoMenu() {
-		shapeAX.disable();
-	}
+
 
 	}
 	

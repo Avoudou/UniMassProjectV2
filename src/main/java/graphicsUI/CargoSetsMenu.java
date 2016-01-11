@@ -43,7 +43,6 @@ public class CargoSetsMenu  extends JPanel{
 			runtimeData.setCustomCargoMenu(false);
 			runtimeData.setPentominoCargoMenu(false);
 			mainPanel.repaint();
-					
 				}
 			}
 		class PentominoCargoButtonListener implements ActionListener {
@@ -53,7 +52,7 @@ public class CargoSetsMenu  extends JPanel{
 			runtimeData.setDefaultCargoMenu(false);
 			runtimeData.setCustomCargoMenu(false);
 			runtimeData.setPentominoCargoMenu(true);
-			mainPanel.repaint();
+
 				
 					
 				}
@@ -66,8 +65,7 @@ public class CargoSetsMenu  extends JPanel{
 			runtimeData.setDefaultCargoMenu(false);
 			runtimeData.setCustomCargoMenu(true);
 			runtimeData.setPentominoCargoMenu(false);
-			// mainPanel.closeCustomCargoMenu();
-			mainPanel.repaint();
+
 
 		}
 	}
