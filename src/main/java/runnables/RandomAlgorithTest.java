@@ -21,28 +21,28 @@ public class RandomAlgorithTest {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		config.width = screenWidth;
 		config.height = screenHeight;
-		FillCargoRandomly randomLoader = new FillCargoRandomly(new  CargoSpaceIndividual(5, 33, 8));
+		//FillCargoRandomly randomLoader = new FillCargoRandomly(new  CargoSpaceIndividual(5, 33, 8));
 
 	
 		
-		CargoSpaceIndividual bestSolution= randomLoader.createRandomPopulation(10000);
+		//CargoSpaceIndividual bestSolution= randomLoader.createRandomPopulation(10000);
 		
-		ShapesDefault shapeList= new ShapesDefault("default");
-		Evaluator evaluator= new Evaluator();
-		double  utopiaWeight= evaluator.getUtopianMaxWeight(bestSolution, shapeList);
-		int  solutionWeight= bestSolution.getTotalWeight();
-		
+//		ShapesDefault shapeList= new ShapesDefault("default");
+//		Evaluator evaluator= new Evaluator();
+//		double  utopiaWeight= evaluator.getUtopianMaxWeight(bestSolution, shapeList);
+//		int  solutionWeight= bestSolution.getTotalWeight();
+//		
 		
 //		System.out.println(shapeList.getShape(0).getWeightPerUnit());
 //		System.out.println(shapeList.getShape(1).getWeightPerUnit());
 //		System.out.println(shapeList.getShape(2).getWeightPerUnit());
 		
-		System.out.println("ideal total weight= "+ utopiaWeight);
-		System.out.println("solution's total2 weight  = "+ solutionWeight);
+//		System.out.println("ideal total weight= "+ utopiaWeight);
+//		System.out.println("solution's total2 weight  = "+ solutionWeight);
 		
 	//	new UIWindow();
 
-		new LwjglApplication(new CargoSpace3D(bestSolution), config);
+	//	new LwjglApplication(new CargoSpace3D(bestSolution), config);
 
 	}
 

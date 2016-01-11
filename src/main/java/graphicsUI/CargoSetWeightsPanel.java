@@ -192,7 +192,7 @@ setCustomCargoC(280,0,setShapeC);
 			yCargoA = Integer.parseInt(shapeAY.getText());
 			xCargoA = Integer.parseInt(shapeAX.getText());
 			zCargoA = Integer.parseInt(shapeAZ.getText());
-			//	System.out.println(yCargoA);
+				//System.out.println(yCargoA);
 		
 				}
 			runtimeData.getCargoData().getShapeList().remove(0);

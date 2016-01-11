@@ -1,5 +1,7 @@
 package loadingAlgorithms;
 
+import graphicsUI.RunTimeData;
+
 import java.util.ArrayList;
 
 import basicTools.FillCargo;
@@ -14,11 +16,12 @@ public class FillCargoRandomly extends FillCargo {
 	 private int y;
 	 private int x;
 	 private int z;
-
+	 private RunTimeData runtimeData;
 	
 
-	public FillCargoRandomly(CargoSpaceIndividual cargoSpaceModel) {
-		this.cargoSpaceModel=cargoSpaceModel;
+	public FillCargoRandomly(RunTimeData runtimeData) {
+		this.runtimeData= runtimeData;
+		this.cargoSpaceModel=runtimeData.getACargoSpace();	
 		y=cargoSpaceModel.getCargoSpace().length;
 		x=cargoSpaceModel.getCargoSpace()[0].length;
 		z=cargoSpaceModel.getCargoSpace()[0][0].length;
@@ -28,7 +31,7 @@ public class FillCargoRandomly extends FillCargo {
 	
 	public CargoSpaceIndividual createRandomPopulation(int populationSize){
 		
-		ShapesDefault shapes = new ShapesDefault("default");
+		CargoData shapes = runtimeData.getCargoData();
 		CargoSpaceIndividual bestSpace= new CargoSpaceIndividual(y, x, z);
 		fillCargoSpaceRandomly(bestSpace,shapes);
 		int bestMaxWeight = bestSpace.getTotalWeight();

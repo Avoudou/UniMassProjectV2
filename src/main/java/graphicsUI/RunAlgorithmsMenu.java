@@ -49,7 +49,7 @@ public class RunAlgorithmsMenu extends JPanel {
 			config.width = 1000;
 			config.height = 800;
 			
-			FillCargoRandomly randomLoader = new FillCargoRandomly(runtimeData.getACargoSpace());
+			FillCargoRandomly randomLoader = new FillCargoRandomly(runtimeData);
 
 			CargoSpaceIndividual bestSolution = randomLoader.createRandomPopulation(10000);
 
@@ -62,7 +62,7 @@ public class RunAlgorithmsMenu extends JPanel {
 			System.out.println("solution's total2 weight  = " + solutionWeight);
 
 			// new UIWindow();
-
+			System.out.println(runtimeData.getCargoData().getShape(0).getShape().length);
 			new LwjglApplication(new CargoSpace3D(bestSolution), config);
 
 		}
