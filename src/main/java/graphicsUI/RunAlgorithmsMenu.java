@@ -1,9 +1,6 @@
 package graphicsUI;
 
-import static graphics3D.Constants.screenHeight;
-import static graphics3D.Constants.screenWidth;
 import graphics3D.CargoSpace3D;
-
 
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -12,17 +9,15 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 
 import loadingAlgorithms.FillCargoRandomly;
+import objectDefinitions.CargoSpaceIndividual;
 import basicTools.Evaluator;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 
 import databases.CargoData;
-import databases.ShapesDefault;
-import objectDefinitions.CargoSpaceIndividual;
 
 public class RunAlgorithmsMenu extends JPanel {
 	private RunTimeData runtimeData;
@@ -48,7 +43,8 @@ public class RunAlgorithmsMenu extends JPanel {
 			config.forceExit = false;
 			config.width = 1000;
 			config.height = 800;
-			
+
+
 			FillCargoRandomly randomLoader = new FillCargoRandomly(runtimeData);
 
 			CargoSpaceIndividual bestSolution = randomLoader.createRandomPopulation(10000);

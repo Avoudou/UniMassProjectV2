@@ -1,33 +1,23 @@
 package graphics3D;
 
-import com.badlogic.gdx.ApplicationListener;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.*;
-import com.badlogic.gdx.graphics.VertexAttributes.Usage;
-import com.badlogic.gdx.graphics.g3d.*;
-import com.badlogic.gdx.graphics.g3d.attributes.BlendingAttribute;
-import com.badlogic.gdx.graphics.g3d.attributes.ColorAttribute;
-import com.badlogic.gdx.graphics.g3d.environment.DirectionalLight;
-import com.badlogic.gdx.graphics.g3d.utils.ModelBuilder;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import objectDefinitions.CargoSpaceIndividual;
 
-import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.PerspectiveCamera;
 import com.badlogic.gdx.graphics.VertexAttributes.Usage;
 import com.badlogic.gdx.graphics.g3d.Environment;
+import com.badlogic.gdx.graphics.g3d.Material;
 import com.badlogic.gdx.graphics.g3d.Model;
 import com.badlogic.gdx.graphics.g3d.ModelBatch;
 import com.badlogic.gdx.graphics.g3d.ModelInstance;
+import com.badlogic.gdx.graphics.g3d.attributes.BlendingAttribute;
 import com.badlogic.gdx.graphics.g3d.attributes.ColorAttribute;
 import com.badlogic.gdx.graphics.g3d.environment.DirectionalLight;
-import com.badlogic.gdx.graphics.g3d.Material;
 import com.badlogic.gdx.graphics.g3d.utils.MeshPartBuilder;
 import com.badlogic.gdx.graphics.g3d.utils.ModelBuilder;
 import com.badlogic.gdx.math.MathUtils;
@@ -82,19 +72,6 @@ public class CargoSpace3D extends Basic3DTest {
 					if (cargoSpace.getCargoSpace()[(int) y][(int) x][(int) z] != 0) {
 						
 						drawCargoCube(modelBuilder, models, y, x, z, colorIdMatch.get(findIdIndex(cargoIdList, cargoSpace.getCargoSpace()[(int) y][(int) x][(int) z])));
-						
-//						if (cargoSpace.getCargoSpace()[(int) x][(int) y][(int) z] % 10 == 1
-//								|| cargoSpace.getCargoSpace()[(int) x][(int) y][(int) z] % 10 == 0) {
-//							drawCargoCube(modelBuilder, models, x, y, z, new Color(.6f, .7f, .7f, 0.5f));
-//						}
-//						if (cargoSpace.getCargoSpace()[(int) x][(int) y][(int) z] % 10 == 2) {
-//							drawCargoCube(modelBuilder, models, x, y, z, new Color(0.3f, .8f, .6f, 0));
-//						}
-//						if (cargoSpace.getCargoSpace()[(int) x][(int) y][(int) z] % 10 == 3) {
-//							drawCargoCube(modelBuilder, models, x, y, z, new Color(0.9f, .4f, .2f, 0));
-//						}
-						
-						
 
 					}
 				}
