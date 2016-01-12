@@ -16,11 +16,11 @@ public class CargoSetsMenu  extends JPanel{
 	private JButton defaultSetButton = new JButton("Default Cargo");
 	private JButton pentominoSetButton = new JButton("Pentomino Cargo");
 	private JButton customSetButton = new JButton("Custom Cargo");
-	private CargoSetCustomPanel mainPanel;
+	private UIWindow aWindow;
 
-	public CargoSetsMenu(RunTimeData runtimeData, CargoSetCustomPanel mainPanel) {
+	public CargoSetsMenu(RunTimeData runtimeData, UIWindow aWindow) {
 		 this.runtimeData=runtimeData;
-		this.mainPanel = mainPanel;
+		this.aWindow = aWindow;
 		 	setLayout(new GridLayout(1, 6));
 			
 
@@ -39,10 +39,13 @@ public class CargoSetsMenu  extends JPanel{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+			System.out.println("pressed");
 			runtimeData.setDefaultCargoMenu(true);
 			runtimeData.setCustomCargoMenu(false);
 			runtimeData.setPentominoCargoMenu(false);
-			mainPanel.repaint();
+			aWindow.disposeCentralPanel();
+			aWindow.setCentralPanel();
+			aWindow.repaint();
 				}
 			}
 		class PentominoCargoButtonListener implements ActionListener {

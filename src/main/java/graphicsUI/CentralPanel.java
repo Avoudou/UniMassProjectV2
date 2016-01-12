@@ -1,6 +1,6 @@
 package graphicsUI;
 
-import java.awt.BorderLayout;
+import java.awt.GridLayout;
 
 import javax.swing.JPanel;
 
@@ -11,9 +11,9 @@ public class CentralPanel extends JPanel {
 	public CentralPanel(RunTimeData runtimeData, UIWindow aUIWindow) {
 		this.aUIWindow = aUIWindow;
 		this.runtimeData = runtimeData;
-		setLayout(new BorderLayout(3, 1));
-		add(new CargoSetCustomPanel(runtimeData), 0);
-		add(new CargoSetWeightsPanel(runtimeData), 1);
+		setLayout(new GridLayout(4, 1));
+		add(new CargoSetCustomPanel(runtimeData));
+		add(new CargoSetWeightsPanel(runtimeData));
 
 	}
 

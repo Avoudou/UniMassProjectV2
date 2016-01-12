@@ -12,6 +12,7 @@ import lombok.Setter;
 public class UIWindow extends JFrame{
 	
 	private RunTimeData runtimeData;
+	private CentralPanel centralPanel;
 	
 	public UIWindow(RunTimeData runtimeData) {
 		this.runtimeData=runtimeData;
@@ -24,15 +25,22 @@ public class UIWindow extends JFrame{
 		
 		add(new CargoSpaceMenu(this.runtimeData), BorderLayout.SOUTH);
 		add(new RunAlgorithmsMenu(this.runtimeData), BorderLayout.WEST);
-		CargoSetCustomPanel customShapes = new CargoSetCustomPanel(this.runtimeData);
-		add(new CargoSetsMenu(this.runtimeData, customShapes), BorderLayout.NORTH);
 
-		add(new CentralPanel(runtimeData, this), BorderLayout.CENTER);
-		// add(new CargoSetWeightsPanel(runtimeData), BorderLayout.CENTER);
-		// add(customShapes, BorderLayout.CENTER);
+		add(new CargoSetsMenu(this.runtimeData, this), BorderLayout.NORTH);
+		setCentralPanel();
 
 		setVisible(true);
 
+	}
+
+	public void setCentralPanel() {
+		centralPanel = new CentralPanel(runtimeData, this);
+		add(centralPanel, BorderLayout.CENTER);
+
+	}
+
+	public void disposeCentralPanel() {
+		centralPanel.remove(centralPanel);
 	}
 	
 	
