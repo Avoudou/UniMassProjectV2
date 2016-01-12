@@ -4,12 +4,10 @@ import graphicsUI.RunTimeData;
 
 import java.util.ArrayList;
 
-import basicTools.FillCargo;
-import objectDefinitions.CargoSpaceIndividual;
 import objectDefinitions.CargoGenerator;
-import databases.Population;
+import objectDefinitions.CargoSpaceIndividual;
+import basicTools.FillCargo;
 import databases.CargoData;
-import databases.ShapesDefault;
 
 public class FillCargoRandomly extends FillCargo {
 	private CargoSpaceIndividual cargoSpaceModel;
