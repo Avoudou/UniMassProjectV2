@@ -39,6 +39,7 @@ public class UIWindow extends JFrame {
 	}
 
 	public void disposeCentralPanel() {
+		// centralPanel.disable();
 		this.remove(centralPanel);
 	}
 

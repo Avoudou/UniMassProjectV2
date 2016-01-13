@@ -33,35 +33,40 @@ public class CargoSetWeightsPanel extends JPanel {
 
 	public CargoSetWeightsPanel(RunTimeData runtimeData) {
 		this.runtimeData = runtimeData;
+
 	}
 
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-
 		setWeightFields();
+
 	}
 
 	private void setWeightFields() {
 
 		weightCargoA.setBounds(100, 20, 50, 20);
 		cargoALabel.setBounds(100, 40, 120, 15);
-		add(cargoALabel);
-		add(weightCargoA);
+
 
 		weightCargoB.setBounds(210, 20, 50, 20);
 		cargoBLabel.setBounds(210, 40, 120, 15);
-		add(weightCargoB);
-		add(cargoBLabel);
+
 
 		weightCargoC.setBounds(320, 20, 50, 20);
 		cargoCLabel.setBounds(320, 40, 120, 15);
-		add(weightCargoC);
-		add(cargoCLabel);
 
 		setWeightsButton.addActionListener(weightsFIX);
 		setWeightsButton.setBounds(430, 20, 160, 30);
+		add(cargoALabel);
+		add(weightCargoA);
+		add(weightCargoB);
+		add(cargoBLabel);
+		add(weightCargoC);
+		add(cargoCLabel);
+
 		add(setWeightsButton);
+
 	}
 
 	private class WeightButtonListener implements ActionListener {
@@ -75,7 +80,7 @@ public class CargoSetWeightsPanel extends JPanel {
 				a = Integer.parseInt(weightCargoA.getText());
 				b = Integer.parseInt(weightCargoB.getText());
 				c = Integer.parseInt(weightCargoC.getText());
-				// System.out.println("I M PRINTED");
+				System.out.println(runtimeData.getCargoData().getShapeList().get(0).getWeightTotal());
 				runtimeData.getCargoData().getShapeList().get(0).setWeightTotal(a);
 				runtimeData.getCargoData().getShapeList().get(1).setWeightTotal(b);
 				runtimeData.getCargoData().getShapeList().get(2).setWeightTotal(c);

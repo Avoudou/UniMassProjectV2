@@ -1,6 +1,5 @@
 package graphicsUI;
 
-
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,9 +17,9 @@ public class CargoSetCustomPanel extends JPanel {
 	private ImageIcon imageB = new ImageIcon("Textures/DefaultB.jpg");
 	private ImageIcon imageC = new ImageIcon("Textures/DefaultC.jpg");
 
-	private JButton  setShapeA = new JButton("set cargo A");
-	private JButton  setShapeB = new JButton("set cargo B");
-	private JButton  setShapeC = new JButton("set cargo C");
+	private JButton setShapeA = new JButton("set cargo A");
+	private JButton setShapeB = new JButton("set cargo B");
+	private JButton setShapeC = new JButton("set cargo C");
 
 	private int yCargoA;
 	private int xCargoA;
@@ -33,26 +32,25 @@ public class CargoSetCustomPanel extends JPanel {
 	private int zCargoC;
 	private JTextField shapeAY = new JTextField();
 	private JTextField shapeAX = new JTextField();
-	private	JTextField shapeAZ = new JTextField();
+	private JTextField shapeAZ = new JTextField();
 	private JTextField shapeBY = new JTextField();
 	private JTextField shapeBX = new JTextField();
-	private	JTextField shapeBZ = new JTextField();
+	private JTextField shapeBZ = new JTextField();
 	private JTextField shapeCY = new JTextField();
 	private JTextField shapeCX = new JTextField();
-	private	JTextField shapeCZ = new JTextField();
-	private JLabel shapeAYlabel= new  JLabel("Xcoord");
-	private JLabel shapeAXlabel= new  JLabel("Y coord");
-	private JLabel shapeAZlabel= new  JLabel("Z coord");
-	private JLabel shapeBYlabel= new  JLabel("Xcoord");
-	private JLabel shapeBXlabel= new  JLabel("Y coord");
-	private JLabel shapeBZlabel= new  JLabel("Z coord");
-	private JLabel shapeCYlabel= new  JLabel("Xcoord");
-	private JLabel shapeCXlabel= new  JLabel("Y coord");
-	private JLabel shapeCZlabel= new  JLabel("Z coord");
+	private JTextField shapeCZ = new JTextField();
+	private JLabel shapeAYlabel = new JLabel("Ycoord");
+	private JLabel shapeAXlabel = new JLabel("X coord");
+	private JLabel shapeAZlabel = new JLabel("Z coord");
+	private JLabel shapeBYlabel = new JLabel("Ycoord");
+	private JLabel shapeBXlabel = new JLabel("X coord");
+	private JLabel shapeBZlabel = new JLabel("Z coord");
+	private JLabel shapeCYlabel = new JLabel("Ycoord");
+	private JLabel shapeCXlabel = new JLabel("X coord");
+	private JLabel shapeCZlabel = new JLabel("Z coord");
 
 	private RunTimeData runtimeData;
-	
-	
+
 	public CargoSetCustomPanel(RunTimeData runtimeData) {
 		this.runtimeData = runtimeData;
 	}
@@ -61,6 +59,7 @@ public class CargoSetCustomPanel extends JPanel {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		if (runtimeData.isDefaultCargoSet()) {
+			removeCustomShapeFields();
 			g.drawImage(imageA.getImage(), 75, 0, 125, 125, null);
 			g.drawImage(imageB.getImage(), 200, 0, 125, 125, null);
 			g.drawImage(imageC.getImage(), 325, 0, 125, 125, null);
@@ -72,7 +71,6 @@ public class CargoSetCustomPanel extends JPanel {
 		}
 
 	}
-
 
 	private void setCustomCargoA(int x, int y, JButton aButton) {
 
@@ -98,6 +96,7 @@ public class CargoSetCustomPanel extends JPanel {
 		aButton.setBounds(75 + x, 100 + y, 120, 15);
 		add(aButton);
 	}
+
 	private void setCustomCargoB(int x, int y, JButton aButton) {
 
 		shapeBY.setBounds(75 + x, 40 + y, 50, 20);
@@ -122,6 +121,7 @@ public class CargoSetCustomPanel extends JPanel {
 		aButton.setBounds(75 + x, 100 + y, 120, 15);
 		add(aButton);
 	}
+
 	private void setCustomCargoC(int x, int y, JButton aButton) {
 
 		shapeCY.setBounds(75 + x, 40 + y, 50, 20);
@@ -147,68 +147,87 @@ public class CargoSetCustomPanel extends JPanel {
 		add(aButton);
 	}
 
-	class SetCargoAButton implements ActionListener {
+	private void removeCustomShapeFields() {
+		this.remove(shapeAXlabel);
+		this.remove(shapeAYlabel);
+		this.remove(shapeAZlabel);
+		this.remove(setShapeA);
+		this.remove(shapeAY);
+		this.remove(shapeAX);
+		this.remove(shapeAZ);
+		this.remove(shapeBXlabel);
+		this.remove(shapeBYlabel);
+		this.remove(shapeBZlabel);
+		this.remove(setShapeB);
+		this.remove(shapeBX);
+		this.remove(shapeBY);
+		this.remove(shapeBZ);
+		this.remove(shapeCXlabel);
+		this.remove(shapeCYlabel);
+		this.remove(shapeCZlabel);
+		this.remove(setShapeC);
+		this.remove(shapeCX);
+		this.remove(shapeCY);
+		this.remove(shapeCZ);
+	}
+
+	private class SetCargoAButton implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("Cargos were set");
 			if (shapeAX.getText().length() > 0 && shapeAY.getText().length() > 0 && shapeAZ.getText().length() > 0) {
-			yCargoA = Integer.parseInt(shapeAY.getText());
-			xCargoA = Integer.parseInt(shapeAX.getText());
-			zCargoA = Integer.parseInt(shapeAZ.getText());
-				//System.out.println(yCargoA);
-		
-				}
+				yCargoA = Integer.parseInt(shapeAY.getText());
+				xCargoA = Integer.parseInt(shapeAX.getText());
+				zCargoA = Integer.parseInt(shapeAZ.getText());
+				// System.out.println(yCargoA);
+
+			}
 			runtimeData.getCargoData().getShapeList().remove(0);
-			CargoGenerator newCargo= new CargoGenerator(yCargoA, xCargoA, zCargoA, 1);
-			
+			CargoGenerator newCargo = new CargoGenerator(yCargoA, xCargoA, zCargoA, 1);
+
 			newCargo.setWeightTotal(runtimeData.getWeightCargoA());
 			System.out.println(newCargo.getShape().length);
-			runtimeData.getCargoData().getShapeList().add(0,newCargo);
-				
-						
-			
-			}
+			runtimeData.getCargoData().getShapeList().add(0, newCargo);
+
 		}
-	class SetCargoBButton implements ActionListener {
+	}
+
+	private class SetCargoBButton implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("Cargos were set");
 			if (shapeBX.getText().length() > 0 && shapeBY.getText().length() > 0 && shapeBZ.getText().length() > 0) {
-			yCargoB = Integer.parseInt(shapeBY.getText());
-			xCargoB = Integer.parseInt(shapeBX.getText());
-			zCargoB = Integer.parseInt(shapeBZ.getText());
-				
-						
-				}
-			runtimeData.getCargoData().getShapeList().remove(1);
-			CargoGenerator newCargo= new CargoGenerator(yCargoB, xCargoB, zCargoB, 2);
-			newCargo.setWeightTotal(runtimeData.getWeightCargoB());
-			runtimeData.getCargoData().getShapeList().add(1,newCargo);
-				
+				yCargoB = Integer.parseInt(shapeBY.getText());
+				xCargoB = Integer.parseInt(shapeBX.getText());
+				zCargoB = Integer.parseInt(shapeBZ.getText());
+
 			}
+			runtimeData.getCargoData().getShapeList().remove(1);
+			CargoGenerator newCargo = new CargoGenerator(yCargoB, xCargoB, zCargoB, 2);
+			newCargo.setWeightTotal(runtimeData.getWeightCargoB());
+			runtimeData.getCargoData().getShapeList().add(1, newCargo);
+
 		}
-	class SetCargoCButton implements ActionListener {
+	}
+
+	private class SetCargoCButton implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("Cargos were set");
 			if (shapeCX.getText().length() > 0 && shapeCY.getText().length() > 0 && shapeCZ.getText().length() > 0) {
-			yCargoC = Integer.parseInt(shapeCY.getText());
-			xCargoC = Integer.parseInt(shapeCX.getText());
-			zCargoC = Integer.parseInt(shapeCZ.getText());
-				
-						
-				}
-			runtimeData.getCargoData().getShapeList().remove(2);
-			CargoGenerator newCargo= new CargoGenerator(yCargoC, xCargoC, zCargoC, 3);
-			newCargo.setWeightTotal(runtimeData.getWeightCargoC());
-			runtimeData.getCargoData().getShapeList().add(2,newCargo);
+				yCargoC = Integer.parseInt(shapeCY.getText());
+				xCargoC = Integer.parseInt(shapeCX.getText());
+				zCargoC = Integer.parseInt(shapeCZ.getText());
+
 			}
+			runtimeData.getCargoData().getShapeList().remove(2);
+			CargoGenerator newCargo = new CargoGenerator(yCargoC, xCargoC, zCargoC, 3);
+			newCargo.setWeightTotal(runtimeData.getWeightCargoC());
+			runtimeData.getCargoData().getShapeList().add(2, newCargo);
 		}
-
-
-
 	}
-	
+
+}
