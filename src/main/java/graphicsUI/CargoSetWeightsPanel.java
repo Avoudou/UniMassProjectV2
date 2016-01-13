@@ -65,40 +65,31 @@ public class CargoSetWeightsPanel extends JPanel {
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		if (runtimeData.isDefaultCargoSet()) {
-			g.drawImage(imageA.getImage(), 75, 0, 125, 125, null);
-			g.drawImage(imageB.getImage(), 200, 0, 125, 125, null);
-			g.drawImage(imageC.getImage(), 325, 0, 125, 125, null);
-		}
-		if (runtimeData.isCustomCargoSet()) {
-			setCustomCargoA(0, 0, setShapeA);
-			setCustomCargoB(140, 0, setShapeB);
-			setCustomCargoC(280, 0, setShapeC);
-		}
+
 		setWeightFields();
 	}
 	private void setWeightFields() {
 		
-		weightCargoA.setBounds(115, 130, 50, 20);
-		cargoALabel.setBounds(90, 152, 120, 15);
+		weightCargoA.setBounds(40, 20, 50, 20);
+		cargoALabel.setBounds(30, 40, 120, 15);
 		add(cargoALabel);
 		add(weightCargoA);
 
 		
-		weightCargoB.setBounds(240, 130, 50, 20);
-		cargoBLabel.setBounds(215, 152, 120, 15);
+		weightCargoB.setBounds(150, 20, 50, 20);
+		cargoBLabel.setBounds(150, 40, 120, 15);
 		add(weightCargoB);
 		add(cargoBLabel);
 
 	
-		weightCargoC.setBounds(365, 130, 50, 20);
-		cargoCLabel.setBounds(340, 152, 120, 15);
+		weightCargoC.setBounds(260, 20, 50, 20);
+		cargoCLabel.setBounds(260, 40, 120, 15);
 		add(weightCargoC);
 		add(cargoCLabel);
 		
 		
 		setWeightsButton.addActionListener(new WeightButtonListener());
-		setWeightsButton.setBounds(500, 125, 160, 30);
+		setWeightsButton.setBounds(450, 40, 160, 30);
 		add(setWeightsButton);
 	}
 
