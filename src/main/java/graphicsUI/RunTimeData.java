@@ -10,6 +10,8 @@ import databases.ShapesDefault;
 @Setter
 public class RunTimeData {
 
+	private String outputInfo = "test";
+
 	private CargoSpaceIndividual aCargoSpace = new CargoSpaceIndividual(5, 33, 8);
 	private CargoData cargoData = new ShapesDefault("weight");
 	private int weightCargoA = 3;
@@ -42,7 +44,7 @@ public class RunTimeData {
 	}
 
 	public boolean isCustomCargoSet() {
-		// TODO Auto-generated method stub
+
 		return customCargoSet;
 	}
 
@@ -52,23 +54,33 @@ public class RunTimeData {
 	}
 
 	public boolean isDefaultCargoSet() {
-		// TODO Auto-generated method stub
+
 		return defaultCargoSet;
 	}
 
 	public int getWeightCargoA() {
-		// TODO Auto-generated method stub
+
 		return weightCargoA;
 	}
 
 	public int getWeightCargoB() {
-		// TODO Auto-generated method stub
+
 		return weightCargoB;
 	}
 
 	public int getWeightCargoC() {
-		// TODO Auto-generated method stub
+
 		return weightCargoC;
+	}
+
+	public String getOutputInfo() {
+		// System.out.println(outputInfo);
+		return outputInfo;
+
+	}
+
+	public void setOutputInfo(String outString) {
+		outputInfo = outString;
 	}
 
 }

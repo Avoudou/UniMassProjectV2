@@ -21,7 +21,7 @@ public class CargoSetsMenu  extends JPanel{
 	public CargoSetsMenu(RunTimeData runtimeData, UIWindow aWindow) {
 		 this.runtimeData=runtimeData;
 		this.aWindow = aWindow;
-		 	setLayout(new GridLayout(1, 6));
+		setLayout(new GridLayout(1, 6));
 			
 
 			defaultSetButton.addActionListener(new DefaultCargoButtonListener());

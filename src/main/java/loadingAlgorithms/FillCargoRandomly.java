@@ -1,6 +1,7 @@
 package loadingAlgorithms;
 
 import graphicsUI.RunTimeData;
+import graphicsUI.UIWindow;
 
 import java.util.ArrayList;
 
@@ -15,9 +16,11 @@ public class FillCargoRandomly extends FillCargo {
 	private int x;
 	private int z;
 	private RunTimeData runtimeData;
+	private UIWindow aUIWindow;
 
-	public FillCargoRandomly(RunTimeData runtimeData) {
+	public FillCargoRandomly(RunTimeData runtimeData, UIWindow aUIWindow) {
 		this.runtimeData = runtimeData;
+		this.aUIWindow = aUIWindow;
 		this.cargoSpaceModel = runtimeData.getACargoSpace();
 		y = cargoSpaceModel.getCargoSpace().length;
 		x = cargoSpaceModel.getCargoSpace()[0].length;
@@ -41,7 +44,8 @@ public class FillCargoRandomly extends FillCargo {
 			if (tempWeight > bestMaxWeight) {
 				bestSpace = tempSpace;
 				bestMaxWeight = tempWeight;
-				System.out.println("weight of best solution found : " + bestMaxWeight);
+				// runtimeData.setOutputInfo("weight of best solution found : " + bestMaxWeight);
+				// System.out.println("weight of best solution found : " + bestMaxWeight);
 			}
 
 		}

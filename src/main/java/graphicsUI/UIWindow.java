@@ -24,7 +24,7 @@ public class UIWindow extends JFrame{
 
 		
 		add(new CargoSpaceMenu(this.runtimeData), BorderLayout.SOUTH);
-		add(new RunAlgorithmsMenu(this.runtimeData), BorderLayout.WEST);
+		add(new RunAlgorithmsMenu(this.runtimeData, this), BorderLayout.WEST);
 
 		add(new CargoSetsMenu(this.runtimeData, this), BorderLayout.NORTH);
 		setCentralPanel();
@@ -40,12 +40,17 @@ public class UIWindow extends JFrame{
 	}
 
 	public void disposeCentralPanel() {
-		centralPanel.remove(centralPanel);
+		this.remove(centralPanel);
+	}
+
+	public void setOutInfo() {
+		centralPanel.setOutInfoText();
 	}
 	
 	
 	
 	
+
 
 
 }

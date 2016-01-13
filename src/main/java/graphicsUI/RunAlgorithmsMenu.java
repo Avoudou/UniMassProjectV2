@@ -24,10 +24,11 @@ public class RunAlgorithmsMenu extends JPanel {
 	private RunTimeData runtimeData;
 	private JButton startRandomButton = new JButton("RUN:Random Algorithm");
 	private JTextField population = new JTextField("10000");
+	private UIWindow aWindow;
 
-	public RunAlgorithmsMenu(RunTimeData runtimeData) {
+	public RunAlgorithmsMenu(RunTimeData runtimeData, UIWindow aWindow) {
 		this.runtimeData = runtimeData;
-
+		this.aWindow = aWindow;
 
 		setLayout(new GridLayout(15, 1));
 
@@ -51,7 +52,7 @@ public class RunAlgorithmsMenu extends JPanel {
 			config.height = 800;
 
 
-			FillCargoRandomly randomLoader = new FillCargoRandomly(runtimeData);
+			FillCargoRandomly randomLoader = new FillCargoRandomly(runtimeData, aWindow);
 
 			CargoSpaceIndividual bestSolution = randomLoader.createRandomPopulation(Integer.parseInt(population
 					.getText()));
@@ -61,11 +62,16 @@ public class RunAlgorithmsMenu extends JPanel {
 			double utopiaWeight = evaluator.getUtopianMaxWeight(bestSolution, shapeList);
 			int solutionWeight = bestSolution.getTotalWeight();
 
-			System.out.println("ideal total weight= " + utopiaWeight);
-			System.out.println("solution's total weight  = " + solutionWeight);
+			runtimeData.setOutputInfo("Algorithm : random algorithm" + "\n" + "Cargo Used : " + "Default" + "\n"
+					+ "Ideal total weight= " + utopiaWeight + "\n" + "Solution's total weight  = "
+					+ solutionWeight);
+			// System.out.println(runtimeData.getOutputInfo());
+			aWindow.setOutInfo();
+			// aWindow.disposeCentralPanel();
+			// aWindow.setCentralPanel();
+			// System.out.println("solution's total weight  = " + solutionWeight);
 
-			// new UIWindow();
-			System.out.println(runtimeData.getCargoData().getShape(0).getShape().length);
+
 			new LwjglApplication(new CargoSpace3D(bestSolution), config);
 
 		}
