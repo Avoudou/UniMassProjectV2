@@ -23,15 +23,10 @@ public class PrintOutputInfo extends JPanel {
 	}
 
 	public void setOutinfo(String info) {
-		// System.out.println(outInfo);
+
 		System.out.println(runtimeData);
 		System.out.println(runtimeData.getOutputInfo());
 		outInfo.setText(runtimeData.getOutputInfo());
-
-		// remove(outInfo);
-		// outInfo = new JTextArea(runtimeData.getOutputInfo());
-		// outInfo.replaceRange(runtimeData.getOutputInfo(), 0, 1000);
-
 
 	}
 

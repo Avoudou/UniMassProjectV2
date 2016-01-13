@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import loadingAlgorithms.FillCargoRandomly;
+import loadingAlgorithms.GreedyAlgorithm;
 import objectDefinitions.CargoSpaceIndividual;
 import basicTools.Evaluator;
 
@@ -23,6 +24,7 @@ import databases.CargoData;
 public class RunAlgorithmsMenu extends JPanel {
 	private RunTimeData runtimeData;
 	private JButton startRandomButton = new JButton("RUN:Random Algorithm");
+	private JButton startGreedyButton = new JButton("RUN:Greedy Algorithm");
 	private JTextField population = new JTextField("10000");
 	private UIWindow aWindow;
 
@@ -38,11 +40,13 @@ public class RunAlgorithmsMenu extends JPanel {
 
 		startRandomButton.addActionListener(new RunRandomButtonListener());
 		add(startRandomButton);
-		add(new JLabel("Run Greedy Algorithm"));
+		startGreedyButton.addActionListener(new RunGreedyButtonListener());
+		add(new JLabel(""));
+		add(startGreedyButton);
 
 	}
 
-	class RunRandomButtonListener implements ActionListener {
+	private class RunRandomButtonListener implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -50,7 +54,6 @@ public class RunAlgorithmsMenu extends JPanel {
 			config.forceExit = false;
 			config.width = 1000;
 			config.height = 800;
-
 
 			FillCargoRandomly randomLoader = new FillCargoRandomly(runtimeData, aWindow);
 
@@ -63,14 +66,39 @@ public class RunAlgorithmsMenu extends JPanel {
 			int solutionWeight = bestSolution.getTotalWeight();
 
 			runtimeData.setOutputInfo("Algorithm : random algorithm" + "\n" + "Cargo Used : " + "Default" + "\n"
-					+ "Ideal total weight= " + utopiaWeight + "\n" + "Solution's total weight  = "
-					+ solutionWeight);
-			// System.out.println(runtimeData.getOutputInfo());
-			aWindow.setOutInfo();
-			// aWindow.disposeCentralPanel();
-			// aWindow.setCentralPanel();
-			// System.out.println("solution's total weight  = " + solutionWeight);
+					+ "Ideal total weight= " + utopiaWeight + "\n" + "Solution's total weight  = " + solutionWeight);
 
+			aWindow.setOutInfo();
+
+			new LwjglApplication(new CargoSpace3D(bestSolution), config);
+
+		}
+	}
+
+	private class RunGreedyButtonListener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
+			config.forceExit = false;
+			config.width = 1000;
+			config.height = 800;
+
+			GreedyAlgorithm greedyLoader = new GreedyAlgorithm(runtimeData);
+
+			CargoSpaceIndividual bestSolution = greedyLoader.createRandomPopulation(1000);
+
+			CargoData shapeList = runtimeData.getCargoData();
+			Evaluator evaluator = new Evaluator();
+			double utopiaWeight = evaluator.getUtopianMaxWeight(bestSolution, shapeList);
+			int solutionWeight = bestSolution.getTotalWeight();
+
+			System.out.println("ideal total weight= " + utopiaWeight);
+			System.out.println("solution's total weight  = " + solutionWeight);
+
+			runtimeData.setOutputInfo("Algorithm : Greedy algorithm" + "\n" + "Cargo Used : " + "Default" + "\n"
+					+ "Ideal total weight= " + utopiaWeight + "\n" + "Solution's total weight  = " + solutionWeight);
+			aWindow.setOutInfo();
 
 			new LwjglApplication(new CargoSpace3D(bestSolution), config);
 

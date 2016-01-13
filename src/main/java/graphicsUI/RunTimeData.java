@@ -34,13 +34,13 @@ public class RunTimeData {
 	}
 
 	public CargoData getCargoData() {
-		
+
 		return cargoData;
 	}
 
 	public void setACargoSpace(CargoSpaceIndividual cargoSpaceIndividual) {
 		aCargoSpace = cargoSpaceIndividual;
-		
+
 	}
 
 	public boolean isCustomCargoSet() {
@@ -49,7 +49,7 @@ public class RunTimeData {
 	}
 
 	public CargoSpaceIndividual getACargoSpace() {
-		
+
 		return aCargoSpace;
 	}
 

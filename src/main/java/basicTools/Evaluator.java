@@ -1,8 +1,11 @@
 package basicTools;
 
+import java.util.ArrayList;
+
+import objectDefinitions.CargoGenerator;
 import objectDefinitions.CargoSpaceIndividual;
-import databases.Population;
 import databases.CargoData;
+import databases.Population;
 
 public class Evaluator {
 
@@ -42,6 +45,18 @@ public class Evaluator {
 		}
 
 		return maxWeightPerUnit;
+	}
+
+	public int bestWeightPerUnitIndex(ArrayList<CargoGenerator> shapes) {
+		CargoGenerator bestShape = shapes.get(0);
+		int bestShapeIndex = 0;
+		for (int i = 1; i < shapes.size(); i++) {
+			if (shapes.get(i).getWeightPerUnit() > bestShape.getWeightPerUnit()) {
+				bestShape = shapes.get(i);
+				bestShapeIndex = i;
+			}
+		}
+		return bestShapeIndex;
 	}
 
 }

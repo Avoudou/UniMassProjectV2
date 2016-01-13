@@ -9,20 +9,19 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class UIWindow extends JFrame{
-	
+public class UIWindow extends JFrame {
+
 	private RunTimeData runtimeData;
 	private CentralPanel centralPanel;
-	
+
 	public UIWindow(RunTimeData runtimeData) {
-		this.runtimeData=runtimeData;
+		this.runtimeData = runtimeData;
 
 		setSize(800, 600);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("Cargo Loader");
 		setResizable(false);
 
-		
 		add(new CargoSpaceMenu(this.runtimeData), BorderLayout.SOUTH);
 		add(new RunAlgorithmsMenu(this.runtimeData, this), BorderLayout.WEST);
 
@@ -46,11 +45,5 @@ public class UIWindow extends JFrame{
 	public void setOutInfo() {
 		centralPanel.setOutInfoText();
 	}
-	
-	
-	
-	
-
-
 
 }
