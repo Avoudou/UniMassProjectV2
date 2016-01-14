@@ -16,6 +16,9 @@ public class CargoSetCustomPanel extends JPanel {
 	private ImageIcon imageA = new ImageIcon("Textures/DefaultA.jpg");
 	private ImageIcon imageB = new ImageIcon("Textures/DefaultB.jpg");
 	private ImageIcon imageC = new ImageIcon("Textures/DefaultC.jpg");
+	private ImageIcon imageT = new ImageIcon("Textures/tPentomino.jpg");
+	private ImageIcon imageL = new ImageIcon("Textures/lPentomino.jpg");
+	private ImageIcon imageP = new ImageIcon("Textures/pPentomino.jpg");
 
 	private JButton setShapeA = new JButton("set cargo A");
 	private JButton setShapeB = new JButton("set cargo B");
@@ -50,7 +53,7 @@ public class CargoSetCustomPanel extends JPanel {
 	private JLabel shapeCZlabel = new JLabel("Z coord");
 
 	private RunTimeData runtimeData;
-
+	private boolean fieldsPlaced = false;
 	public CargoSetCustomPanel(RunTimeData runtimeData) {
 		this.runtimeData = runtimeData;
 	}
@@ -60,14 +63,23 @@ public class CargoSetCustomPanel extends JPanel {
 		super.paintComponent(g);
 		if (runtimeData.isDefaultCargoSet()) {
 			removeCustomShapeFields();
+			fieldsPlaced = false;
 			g.drawImage(imageA.getImage(), 75, 0, 125, 125, null);
 			g.drawImage(imageB.getImage(), 200, 0, 125, 125, null);
 			g.drawImage(imageC.getImage(), 325, 0, 125, 125, null);
 		}
-		if (runtimeData.isCustomCargoSet()) {
+		if (runtimeData.isCustomCargoSet() && !fieldsPlaced) {
 			setCustomCargoA(0, 0, setShapeA);
 			setCustomCargoB(140, 0, setShapeB);
 			setCustomCargoC(280, 0, setShapeC);
+			fieldsPlaced = true;
+		}
+		if (runtimeData.isPentominoCargoSet()) {
+			removeCustomShapeFields();
+			fieldsPlaced = false;
+			g.drawImage(imageT.getImage(), 75, 0, 125, 125, null);
+			g.drawImage(imageL.getImage(), 200, 0, 125, 125, null);
+			g.drawImage(imageP.getImage(), 325, 0, 125, 125, null);
 		}
 
 	}

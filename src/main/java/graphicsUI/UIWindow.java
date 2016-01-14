@@ -38,8 +38,9 @@ public class UIWindow extends JFrame {
 
 	}
 
+	@SuppressWarnings("deprecation")
 	public void disposeCentralPanel() {
-		// centralPanel.disable();
+		centralPanel.disable();
 		this.remove(centralPanel);
 	}
 

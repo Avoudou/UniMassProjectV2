@@ -25,7 +25,7 @@ public class RunAlgorithmsMenu extends JPanel {
 	private RunTimeData runtimeData;
 	private JButton startRandomButton = new JButton("RUN:Random Algorithm");
 	private JButton startGreedyButton = new JButton("RUN:Greedy Algorithm");
-	private JTextField population = new JTextField("10000");
+	private JTextField population = new JTextField("1000");
 	private UIWindow aWindow;
 
 	public RunAlgorithmsMenu(RunTimeData runtimeData, UIWindow aWindow) {
@@ -72,8 +72,9 @@ public class RunAlgorithmsMenu extends JPanel {
 					+ "Solution's total weight  = " + solutionWeight + "\n" + "Algorithm runtime: " + elapsedInMs
 					+ "ms");
 
+			aWindow.disposeCentralPanel();
+			aWindow.setCentralPanel();
 			aWindow.setOutInfo();
-
 			new LwjglApplication(new CargoSpace3D(bestSolution), config);
 
 		}
@@ -106,8 +107,10 @@ public class RunAlgorithmsMenu extends JPanel {
  + "Ideal total weight= " + utopiaWeight + "\n"
 					+ "Solution's total weight  = " + solutionWeight + "\n" + "Algorithm runtime: " + elapsedInMs
 					+ "ms");
-			aWindow.setOutInfo();
 
+			aWindow.disposeCentralPanel();
+			aWindow.setCentralPanel();
+			aWindow.setOutInfo();
 			new LwjglApplication(new CargoSpace3D(bestSolution), config);
 
 		}
