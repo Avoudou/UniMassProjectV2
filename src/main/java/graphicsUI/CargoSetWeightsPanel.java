@@ -64,9 +64,10 @@ public class CargoSetWeightsPanel extends JPanel {
 		add(cargoBLabel);
 		add(weightCargoC);
 		add(cargoCLabel);
-
+		if (!runtimeData.getIfWeightsButton()) {
 		add(setWeightsButton);
-
+			runtimeData.setIfWeightsButton(true);
+		}
 	}
 
 	private class WeightButtonListener implements ActionListener {

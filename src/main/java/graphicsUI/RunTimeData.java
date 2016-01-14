@@ -20,6 +20,7 @@ public class RunTimeData {
 	private boolean defaultCargoSet = false;
 	private boolean pentominoCargoSet = false;
 	private boolean customCargoSet = true;
+	private boolean weightbuttonadded = false;
 
 	public void setDefaultCargoMenu(boolean aBoolean) {
 		defaultCargoSet = aBoolean;
@@ -81,6 +82,16 @@ public class RunTimeData {
 
 	public void setOutputInfo(String outString) {
 		outputInfo = outString;
+	}
+
+	public boolean getIfWeightsButton() {
+		// System.out.println(outputInfo);
+		return weightbuttonadded;
+
+	}
+
+	public void setIfWeightsButton(Boolean aboolean) {
+		weightbuttonadded = aboolean;
 	}
 
 }
