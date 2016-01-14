@@ -47,9 +47,9 @@ public class CargoSpace3D extends Basic3DTest {
 
 		modelBatch = new ModelBatch();
 
-		cam = new PerspectiveCamera(70, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		cam = new PerspectiveCamera(50, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		cam.position.set(30f, 40f, -20f);
-		cam.lookAt(-10, 15, 30);
+		cam.lookAt(-10, 5, 30);
 		cam.near = 1f;
 		cam.far = 300f;
 		cam.update();

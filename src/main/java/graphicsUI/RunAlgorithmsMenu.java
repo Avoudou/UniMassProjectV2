@@ -56,17 +56,21 @@ public class RunAlgorithmsMenu extends JPanel {
 			config.height = 800;
 
 			FillCargoRandomly randomLoader = new FillCargoRandomly(runtimeData, aWindow);
+			long start = System.currentTimeMillis();
 
 			CargoSpaceIndividual bestSolution = randomLoader.createRandomPopulation(Integer.parseInt(population
 					.getText()));
-
+			double elapsedInMs = System.currentTimeMillis() - start;
 			CargoData shapeList = runtimeData.getCargoData();
 			Evaluator evaluator = new Evaluator();
 			double utopiaWeight = evaluator.getUtopianMaxWeight(bestSolution, shapeList);
 			int solutionWeight = bestSolution.getTotalWeight();
 
-			runtimeData.setOutputInfo("Algorithm : random algorithm" + "\n" + "Cargo Used : " + "Default" + "\n"
-					+ "Ideal total weight= " + utopiaWeight + "\n" + "Solution's total weight  = " + solutionWeight);
+			runtimeData.setOutputInfo("Algorithm : random algorithm" + "\n" + "Cargo Used : "
+					+ runtimeData.getCargoSetUsed() + "\n"
+ + "Ideal total weight= " + utopiaWeight + "\n"
+					+ "Solution's total weight  = " + solutionWeight + "\n" + "Algorithm runtime: " + elapsedInMs
+					+ "ms");
 
 			aWindow.setOutInfo();
 
@@ -85,8 +89,9 @@ public class RunAlgorithmsMenu extends JPanel {
 			config.height = 800;
 
 			GreedyAlgorithm greedyLoader = new GreedyAlgorithm(runtimeData);
-
-			CargoSpaceIndividual bestSolution = greedyLoader.createRandomPopulation(1000);
+			long start = System.currentTimeMillis();
+			CargoSpaceIndividual bestSolution = greedyLoader.createRandomPopulation(1);
+			double elapsedInMs = System.currentTimeMillis() - start;
 
 			CargoData shapeList = runtimeData.getCargoData();
 			Evaluator evaluator = new Evaluator();
@@ -96,8 +101,11 @@ public class RunAlgorithmsMenu extends JPanel {
 			System.out.println("ideal total weight= " + utopiaWeight);
 			System.out.println("solution's total weight  = " + solutionWeight);
 
-			runtimeData.setOutputInfo("Algorithm : Greedy algorithm" + "\n" + "Cargo Used : " + "Default" + "\n"
-					+ "Ideal total weight= " + utopiaWeight + "\n" + "Solution's total weight  = " + solutionWeight);
+			runtimeData.setOutputInfo("Algorithm : Greedy algorithm" + "\n" + "Cargo Used : "
+					+ runtimeData.getCargoSetName() + "\n"
+ + "Ideal total weight= " + utopiaWeight + "\n"
+					+ "Solution's total weight  = " + solutionWeight + "\n" + "Algorithm runtime: " + elapsedInMs
+					+ "ms");
 			aWindow.setOutInfo();
 
 			new LwjglApplication(new CargoSpace3D(bestSolution), config);

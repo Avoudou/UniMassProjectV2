@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import objectDefinitions.CargoGenerator;
 
 public class CargoData {
-
+	/**
+	 * The arraylist containing the CargoGenerator
+	 */
 	private ArrayList<CargoGenerator> shapeList = new ArrayList<CargoGenerator>();
 
 	public void addShape(CargoGenerator aShape) {

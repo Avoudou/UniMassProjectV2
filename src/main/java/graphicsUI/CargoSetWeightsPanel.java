@@ -25,6 +25,7 @@ public class CargoSetWeightsPanel extends JPanel {
 	private JTextField shapeAZ = new JTextField();
 
 	private RunTimeData runtimeData;
+	private boolean buttonsSet = false;
 
 	private WeightButtonListener weightsFIX = new WeightButtonListener();
 	private int a = 0;
@@ -39,8 +40,10 @@ public class CargoSetWeightsPanel extends JPanel {
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
+		if (!buttonsSet) {
 		setWeightFields();
-
+			buttonsSet = true;
+		}
 	}
 
 	private void setWeightFields() {

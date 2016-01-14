@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import objectDefinitions.CargoSpaceIndividual;
 import databases.CargoData;
-import databases.ShapesDefault;
+import databases.ShapesPentomino3D;
 
 @Getter
 @Setter
@@ -13,10 +13,16 @@ public class RunTimeData {
 	private String outputInfo = "test";
 
 	private CargoSpaceIndividual aCargoSpace = new CargoSpaceIndividual(5, 33, 8);
-	private CargoData cargoData = new ShapesDefault("weight");
+
+	private CargoData cargoData = new ShapesPentomino3D();
+	private String cargoSetUsed = "pentomino set";
+
+	private double lastAlgorithmRuntime;
+
 	private int weightCargoA = 3;
 	private int weightCargoB = 4;
 	private int weightCargoC = 5;
+
 	private boolean defaultCargoSet = false;
 	private boolean pentominoCargoSet = false;
 	private boolean customCargoSet = true;
@@ -94,4 +100,11 @@ public class RunTimeData {
 		weightbuttonadded = aboolean;
 	}
 
+	public void setCargoSetName(String whatSet) {
+		this.cargoSetUsed = whatSet;
+	}
+
+	public String getCargoSetName() {
+		return cargoSetUsed;
+	}
 }

@@ -8,6 +8,9 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import databases.ShapesDefault;
+import databases.ShapesPentomino3D;
+
 public class CargoSetsMenu extends JPanel {
 	private RunTimeData runtimeData;
 
@@ -41,6 +44,8 @@ public class CargoSetsMenu extends JPanel {
 			runtimeData.setDefaultCargoMenu(true);
 			runtimeData.setCustomCargoMenu(false);
 			runtimeData.setPentominoCargoMenu(false);
+			runtimeData.setCargoSetName("Default");
+			runtimeData.setCargoData(new ShapesDefault("weighted"));
 			aWindow.getContentPane().repaint();
 		}
 	}
@@ -52,6 +57,9 @@ public class CargoSetsMenu extends JPanel {
 			runtimeData.setDefaultCargoMenu(false);
 			runtimeData.setCustomCargoMenu(false);
 			runtimeData.setPentominoCargoMenu(true);
+			runtimeData.setCargoSetName("Pentominos");
+			runtimeData.setCargoData(new ShapesPentomino3D());
+			aWindow.getContentPane().repaint();
 
 		}
 	}
@@ -64,6 +72,7 @@ public class CargoSetsMenu extends JPanel {
 			runtimeData.setDefaultCargoMenu(false);
 			runtimeData.setCustomCargoMenu(true);
 			runtimeData.setPentominoCargoMenu(false);
+			runtimeData.setCargoSetName("Custom");
 			aWindow.getContentPane().repaint();
 
 		}
