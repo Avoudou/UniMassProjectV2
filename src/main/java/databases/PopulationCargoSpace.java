@@ -1,10 +1,7 @@
-//package databases;
-//
-//import java.util.ArrayList;
-//
-//import objectDefinitions.CargoSpaceIndividual;
-//
-//public class PopulationCargoSpace {
+package databases;
+
+
+public class PopulationCargoSpace {
 //
 //	private ArrayList<CargoSpaceIndividual> population = new ArrayList<CargoSpaceIndividual>();
 //
@@ -21,4 +18,4 @@
 //		return population.size();
 //	}
 //
-// }
+}
