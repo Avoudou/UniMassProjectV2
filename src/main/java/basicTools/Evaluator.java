@@ -5,26 +5,12 @@ import java.util.ArrayList;
 import objectDefinitions.CargoGenerator;
 import objectDefinitions.CargoSpaceIndividual;
 import databases.CargoData;
-import databases.Population;
 
 public class Evaluator {
 
 	public double getUtopianMaxWeight(CargoSpaceIndividual aCargoSpace, CargoData cargoList) {
 
 		return getCargoSpaceVolume(aCargoSpace) * getBestWeightPerUnit(cargoList);
-
-	}
-
-	public CargoSpaceIndividual findBestCargoSpace(Population aPopulation) {
-		int listSize = aPopulation.getPopulationSize();
-		CargoSpaceIndividual bestFilledSpace = aPopulation.getCargoSpaceIndividual(0);
-		for (int i = 0; i < listSize; i++) {
-			if (aPopulation.getCargoSpaceIndividual(i).getTotalWeight() > bestFilledSpace.getTotalWeight()) {
-				bestFilledSpace = aPopulation.getCargoSpaceIndividual(i);
-			}
-
-		}
-		return bestFilledSpace;
 
 	}
 
@@ -58,5 +44,18 @@ public class Evaluator {
 		}
 		return bestShapeIndex;
 	}
+
+	// public CargoSpaceIndividual findBestCargoSpace(PopulationCargoSpace aPopulation) {
+	// int listSize = aPopulation.getPopulationSize();
+	// CargoSpaceIndividual bestFilledSpace = aPopulation.getCargoSpaceIndividual(0);
+	// for (int i = 0; i < listSize; i++) {
+	// if (aPopulation.getCargoSpaceIndividual(i).getTotalWeight() > bestFilledSpace.getTotalWeight()) {
+	// bestFilledSpace = aPopulation.getCargoSpaceIndividual(i);
+	// }
+	//
+	// }
+	// return bestFilledSpace;
+	//
+	// }
 
 }

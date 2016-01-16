@@ -7,7 +7,9 @@ import java.util.ArrayList;
 
 import objectDefinitions.CargoGenerator;
 import objectDefinitions.CargoSpaceIndividual;
+import basicTools.CargoSolidRot;
 import basicTools.FillCargo;
+import basicTools.PentominoRot;
 import databases.CargoData;
 
 public class FillCargoRandomly extends FillCargo {
@@ -37,15 +39,13 @@ public class FillCargoRandomly extends FillCargo {
 
 		for (int i = 0; i < populationSize; i++) {
 
-			// System.out.println("population size: "+i);
 			CargoSpaceIndividual tempSpace = new CargoSpaceIndividual(y, x, z);
 			fillCargoSpaceRandomly(tempSpace, shapes);
 			int tempWeight = tempSpace.getTotalWeight();
 			if (tempWeight > bestMaxWeight) {
 				bestSpace = tempSpace;
 				bestMaxWeight = tempWeight;
-				// runtimeData.setOutputInfo("weight of best solution found : " + bestMaxWeight);
-				// System.out.println("weight of best solution found : " + bestMaxWeight);
+
 			}
 
 		}
@@ -66,25 +66,33 @@ public class FillCargoRandomly extends FillCargo {
 
 						ArrayList<CargoGenerator> tempList = new ArrayList<CargoGenerator>(ourShapes);
 						boolean somethingPlaced = false;
-						// int counter=0;
+
 						while (tempList.size() > 0 && somethingPlaced == false) {
-
-							// counter ++;
-							// System.out.println("trying"+ counter);
-
 							int randomIndex = (int) (Math.random() * tempList.size());
-							CargoGenerator shape = tempList.get(randomIndex);
+							CargoGenerator cargo = tempList.get(randomIndex);
 							tempList.remove(randomIndex);
+							ArrayList<CargoGenerator> rotationList;
+							if (runtimeData.isPentominoCargoSet()) {
+								rotationList = PentominoRot.generatePentominoCargoRot(cargo);
 
-							if (collisionChecker(i, j, k, shape, aCargoSpace)) {
-								shapePlacer(i, j, k, aCargoSpace, shape);
-								aCargoSpace.setTotalWeight(aCargoSpace.getTotalWeight() + shape.getWeightTotal());
-								ourShapes.get(randomIndex).setShapeIdentity(
-										ourShapes.get(randomIndex).getShapeIdentity() + 10);
-								// System.out.println(ourShapes.get(randomIndex).getShapeIdentity());
-								somethingPlaced = true;
+							} else {
+								rotationList = CargoSolidRot.generateSolidCargoRot(cargo);
 							}
 
+							while (rotationList.size() > 0 && somethingPlaced == false) {
+								int randomIndexRot = (int) (Math.random() * rotationList.size());
+								CargoGenerator cargoRot = rotationList.get(randomIndexRot);
+								rotationList.remove(randomIndexRot);
+
+								if (collisionChecker(i, j, k, cargoRot, aCargoSpace)) {
+									shapePlacer(i, j, k, aCargoSpace, cargoRot);
+									aCargoSpace
+											.setTotalWeight(aCargoSpace.getTotalWeight() + cargoRot.getWeightTotal());
+									ourShapes.get(randomIndex).setShapeIdentity(
+											ourShapes.get(randomIndex).getShapeIdentity() + 10);
+									somethingPlaced = true;
+								}
+							}
 						}
 					}
 				}

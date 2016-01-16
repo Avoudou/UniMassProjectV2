@@ -20,9 +20,7 @@ public class CargoSetWeightsPanel extends JPanel {
 	private JTextField weightCargoB = new JTextField();;
 	private JTextField weightCargoC = new JTextField();;
 
-	private JTextField shapeAY = new JTextField();
-	private JTextField shapeAX = new JTextField();
-	private JTextField shapeAZ = new JTextField();
+
 
 	private RunTimeData runtimeData;
 	private boolean buttonsSet = false;
@@ -42,6 +40,7 @@ public class CargoSetWeightsPanel extends JPanel {
 		super.paintComponent(g);
 		if (!buttonsSet) {
 		setWeightFields();
+			// revalidate();
 			buttonsSet = true;
 		}
 	}

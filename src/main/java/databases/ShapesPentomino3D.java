@@ -15,20 +15,20 @@ public class ShapesPentomino3D extends CargoData {
 	 * the arraylist
 	 */
 	public ShapesPentomino3D() {
+		CargoGenerator lPentomino = new CargoGenerator(4, 2, 1, 2);
+		removeCube(lPentomino, 0, 0);
+		removeCube(lPentomino, 1, 0);
+		removeCube(lPentomino, 2, 0);
+		lPentomino.setWeightTotal(3);
+		CargoGenerator pPentomino = new CargoGenerator(2, 3, 1, 3);
+		removeCube(pPentomino, 0, 0);
+		pPentomino.setWeightTotal(4);
 		CargoGenerator tPentomino = new CargoGenerator(3, 3, 1, 1);
 		removeCube(tPentomino, 1, 0);
 		removeCube(tPentomino, 2, 0);
 		removeCube(tPentomino, 1, 2);
 		removeCube(tPentomino, 2, 2);
-		tPentomino.setWeightTotal(3);
-		CargoGenerator lPentomino = new CargoGenerator(4, 2, 1, 2);
-		removeCube(lPentomino, 0, 0);
-		removeCube(lPentomino, 1, 0);
-		removeCube(lPentomino, 2, 0);
-		lPentomino.setWeightTotal(4);
-		CargoGenerator pPentomino = new CargoGenerator(2, 3, 1, 3);
-		removeCube(pPentomino, 0, 0);
-		pPentomino.setWeightTotal(3);
+		tPentomino.setWeightTotal(5);
 
 		super.addShape(tPentomino);
 		super.addShape(lPentomino);

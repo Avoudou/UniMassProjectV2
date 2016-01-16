@@ -2,18 +2,8 @@ package runnables;
 
 import static graphics3D.Constants.screenHeight;
 import static graphics3D.Constants.screenWidth;
-import graphics3D.CargoSpace3D;
 
-import graphicsUI.UIWindow;
-import loadingAlgorithms.FillCargoRandomly;
-import objectDefinitions.CargoSpaceIndividual;
-import basicTools.Evaluator;
-
-import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
-
-import databases.Population;
-import databases.ShapesDefault;
 
 public class RandomAlgorithTest {
 

@@ -2,7 +2,7 @@ package basicTools;
 
 import objectDefinitions.CargoGenerator;
 
-public class ShapeRot {
+public class TempClassTodelete {
 
 	public void rotateXPlane(CargoGenerator shape) {
 		int[][][] aShape = shape.getShape();

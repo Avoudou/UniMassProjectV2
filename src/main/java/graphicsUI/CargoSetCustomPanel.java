@@ -76,10 +76,11 @@ public class CargoSetCustomPanel extends JPanel {
 		}
 		if (runtimeData.isPentominoCargoSet()) {
 			removeCustomShapeFields();
-			fieldsPlaced = false;
+
 			g.drawImage(imageT.getImage(), 75, 0, 125, 125, null);
 			g.drawImage(imageL.getImage(), 200, 0, 125, 125, null);
 			g.drawImage(imageP.getImage(), 325, 0, 125, 125, null);
+			fieldsPlaced = false;
 		}
 
 	}
