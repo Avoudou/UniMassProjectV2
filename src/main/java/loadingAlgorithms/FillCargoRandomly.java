@@ -94,4 +94,27 @@ public class FillCargoRandomly extends FillCargo {
 		}
 		aCargoSpace.setCargoSpace(space);
 	}
+
+	public CargoSpaceIndividual createDivisorPopulation(int populationSize, CargoSpaceIndividual aCargoSpace) {
+
+		CargoData shapes = runtimeData.getCargoData();
+		CargoSpaceIndividual bestSpace = aCargoSpace;
+		fillCargoSpaceRandomly(bestSpace, shapes);
+		int bestMaxWeight = bestSpace.getTotalWeight();
+
+		for (int i = 0; i < populationSize; i++) {
+
+			CargoSpaceIndividual tempSpace = new CargoSpaceIndividual(aCargoSpace.getCargoSpace().length,
+					aCargoSpace.getCargoSpace()[0].length, aCargoSpace.getCargoSpace()[0][0].length);
+			fillCargoSpaceRandomly(tempSpace, shapes);
+			int tempWeight = tempSpace.getTotalWeight();
+			if (tempWeight > bestMaxWeight) {
+				bestSpace = tempSpace;
+				bestMaxWeight = tempWeight;
+
+			}
+
+		}
+		return bestSpace;
+	}
 }

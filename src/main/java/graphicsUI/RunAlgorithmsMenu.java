@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import loadingAlgorithms.DivideAndLoad;
 import loadingAlgorithms.FillCargoRandomly;
 import loadingAlgorithms.GreedyAlgorithm;
 import objectDefinitions.CargoSpaceIndividual;
@@ -54,6 +55,7 @@ public class RunAlgorithmsMenu extends JPanel {
 
 		add(startModRandomButton);
 		add(new JLabel(""));
+		startDivideButton.addActionListener(new RunDivisorButtonListener());
 		add(startDivideButton);
 
 	}
@@ -64,8 +66,8 @@ public class RunAlgorithmsMenu extends JPanel {
 		public void actionPerformed(ActionEvent e) {
 			LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 			config.forceExit = false;
-			config.width = 1000;
-			config.height = 800;
+			config.width = 800;
+			config.height = 700;
 
 			FillCargoRandomly randomLoader = new FillCargoRandomly(runtimeData, aWindow);
 			long start = System.currentTimeMillis();
@@ -97,15 +99,15 @@ public class RunAlgorithmsMenu extends JPanel {
 		public void actionPerformed(ActionEvent e) {
 			LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 			config.forceExit = false;
-			config.width = 1000;
-			config.height = 800;
+			config.width = 800;
+			config.height = 700;
 
 			GreedyAlgorithm greedyLoader = new GreedyAlgorithm(runtimeData);
 			long start = System.currentTimeMillis();
-			CargoSpaceIndividual bestSolution = greedyLoader.createRandomPopulation(Integer.parseInt(populatioRunAlgorithms
-					.getText()));
+			CargoSpaceIndividual bestSolution = greedyLoader.createRandomPopulation(Integer
+					.parseInt(populatioRunAlgorithms.getText()));
 			double elapsedInMs = System.currentTimeMillis() - start;
-			System.out.println(runtimeData.getCargoData().getShape(0).getWeightTotal());
+			// System.out.println(runtimeData.getCargoData().getShape(0).getWeightTotal());
 			CargoData shapeList = runtimeData.getCargoData();
 			Evaluator evaluator = new Evaluator();
 			double utopiaWeight = evaluator.getUtopianMaxWeight(bestSolution, shapeList);
@@ -127,4 +129,39 @@ public class RunAlgorithmsMenu extends JPanel {
 		}
 	}
 
+	private class RunDivisorButtonListener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
+			config.forceExit = false;
+			config.width = 800;
+			config.height = 700;
+
+			DivideAndLoad divisorLoader = new DivideAndLoad(runtimeData, aWindow);
+			long start = System.currentTimeMillis();
+			CargoSpaceIndividual bestSolution = divisorLoader.dividerLoader(runtimeData.getACargoSpace(),
+					runtimeData.getCargoData());
+			double elapsedInMs = System.currentTimeMillis() - start;
+			// System.out.println(runtimeData.getCargoData().getShape(0).getWeightTotal());
+			CargoData shapeList = runtimeData.getCargoData();
+			Evaluator evaluator = new Evaluator();
+			double utopiaWeight = evaluator.getUtopianMaxWeight(bestSolution, shapeList);
+			int solutionWeight = bestSolution.getTotalWeight();
+
+			System.out.println("ideal total weight= " + utopiaWeight);
+			System.out.println("solution's total weight  = " + solutionWeight);
+
+			runtimeData.setOutputInfo("Algorithm : Divisor algorithm" + "\n" + "Cargo Used : "
+					+ runtimeData.getCargoSetName() + "\n" + "Ideal total weight= " + utopiaWeight + "\n"
+					+ "Solution's total weight  = " + solutionWeight + "\n" + "Algorithm runtime: " + elapsedInMs
+					+ "ms" + "\n" + "Best SubSpace Height  " + divisorLoader.getSubSpaceOutput());
+
+			aWindow.disposeCentralPanel();
+			aWindow.setCentralPanel();
+			aWindow.setOutInfo();
+			new LwjglApplication(new CargoSpace3D(bestSolution), config);
+
+		}
+	}
 }
