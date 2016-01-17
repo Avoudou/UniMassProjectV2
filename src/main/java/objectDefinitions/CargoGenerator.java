@@ -41,23 +41,38 @@ public class CargoGenerator {
 
 	public void setWeightTotal(int weight) {
 		this.weightTotal = weight;
-		this.weightPerUnit = 1.0000*weight / (aShape.length * aShape[0].length * aShape[0][0].length);
-		
+		this.weightPerUnit = 1.0000 * weight
+				/ ((aShape.length * aShape[0].length * aShape[0][0].length) - getEmptyIndexNum());
+
 	}
 
 	public double getWeightPerUnit() {
-		
+
 		return weightPerUnit;
 	}
 
 	public void setShapeIdentity(int i) {
-		shapeIdentity= i;
-		
+		shapeIdentity = i;
+
 	}
 
 	public int getWeightTotal() {
-		// TODO Auto-generated method stub
 		return weightTotal;
 	}
 
+	public int getEmptyIndexNum() {
+		int counter = 0;
+		for (int i = 0; i < aShape.length; i++) {
+			for (int j = 0; j < aShape[i].length; j++) {
+				for (int k = 0; k < aShape[i][j].length; k++) {
+
+					if (aShape[i][j][k] == 0) {
+						counter++;
+					}
+				}
+			}
+		}
+
+		return counter;
+	}
 }

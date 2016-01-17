@@ -67,8 +67,7 @@ public class RunAlgorithmsMenu extends JPanel {
 			int solutionWeight = bestSolution.getTotalWeight();
 
 			runtimeData.setOutputInfo("Algorithm : random algorithm" + "\n" + "Cargo Used : "
-					+ runtimeData.getCargoSetUsed() + "\n"
- + "Ideal total weight= " + utopiaWeight + "\n"
+					+ runtimeData.getCargoSetUsed() + "\n" + "Ideal total weight= " + utopiaWeight + "\n"
 					+ "Solution's total weight  = " + solutionWeight + "\n" + "Algorithm runtime: " + elapsedInMs
 					+ "ms");
 
@@ -91,7 +90,7 @@ public class RunAlgorithmsMenu extends JPanel {
 
 			GreedyAlgorithm greedyLoader = new GreedyAlgorithm(runtimeData);
 			long start = System.currentTimeMillis();
-			CargoSpaceIndividual bestSolution = greedyLoader.createRandomPopulation(1);
+			CargoSpaceIndividual bestSolution = greedyLoader.createRandomPopulation(1000);
 			double elapsedInMs = System.currentTimeMillis() - start;
 
 			CargoData shapeList = runtimeData.getCargoData();
@@ -103,8 +102,7 @@ public class RunAlgorithmsMenu extends JPanel {
 			System.out.println("solution's total weight  = " + solutionWeight);
 
 			runtimeData.setOutputInfo("Algorithm : Greedy algorithm" + "\n" + "Cargo Used : "
-					+ runtimeData.getCargoSetName() + "\n"
- + "Ideal total weight= " + utopiaWeight + "\n"
+					+ runtimeData.getCargoSetName() + "\n" + "Ideal total weight= " + utopiaWeight + "\n"
 					+ "Solution's total weight  = " + solutionWeight + "\n" + "Algorithm runtime: " + elapsedInMs
 					+ "ms");
 

@@ -40,25 +40,28 @@ public class GreedyAlgorithm extends FillCargo {
 
 						ArrayList<CargoGenerator> tempList = new ArrayList<CargoGenerator>(ourShapes);
 						boolean somethingPlaced = false;
-						// int counter=0;
+
 						while (tempList.size() > 0 && somethingPlaced == false) {
-
-							// counter ++;
-							// System.out.println("trying"+ counter);
-
 							int bestIndex = evaluator.bestWeightPerUnitIndex(tempList);
 							CargoGenerator shape = tempList.get(bestIndex);
 							tempList.remove(bestIndex);
 
-							if (collisionChecker(i, j, k, shape, aCargoSpace)) {
-								shapePlacer(i, j, k, aCargoSpace, shape);
-								aCargoSpace.setTotalWeight(aCargoSpace.getTotalWeight() + shape.getWeightTotal());
-								ourShapes.get(bestIndex).setShapeIdentity(
-										ourShapes.get(bestIndex).getShapeIdentity() + 10);
-								// System.out.println(ourShapes.get(randomIndex).getShapeIdentity());
-								somethingPlaced = true;
-							}
+							ArrayList<CargoGenerator> rotationList = new ArrayList<CargoGenerator>(runtimeData
+									.getCargoData().getRotationIndex(bestIndex));
 
+							while (rotationList.size() > 0 && somethingPlaced == false) {
+								int randomIndexRot = (int) (Math.random() * rotationList.size());
+								CargoGenerator cargoRot = rotationList.get(randomIndexRot);
+								rotationList.remove(randomIndexRot);
+
+								if (collisionChecker(i, j, k, cargoRot, aCargoSpace)) {
+									shapePlacer(i, j, k, aCargoSpace, cargoRot);
+									aCargoSpace.setTotalWeight(aCargoSpace.getTotalWeight() + shape.getWeightTotal());
+									ourShapes.get(bestIndex).setShapeIdentity(
+											ourShapes.get(bestIndex).getShapeIdentity() + 10);
+									somethingPlaced = true;
+								}
+							}
 						}
 					}
 				}
@@ -74,7 +77,7 @@ public class GreedyAlgorithm extends FillCargo {
 		fillCargoSpaceGreedy(bestSpace, shapes);
 		int bestMaxWeight = bestSpace.getTotalWeight();
 
-		for (int i = 0; i < 1; i++) {
+		for (int i = 0; i < populationSize; i++) {
 
 			// System.out.println("population size: "+i);
 			CargoSpaceIndividual tempSpace = new CargoSpaceIndividual(y, x, z);

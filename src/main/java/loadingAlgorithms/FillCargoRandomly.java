@@ -7,9 +7,7 @@ import java.util.ArrayList;
 
 import objectDefinitions.CargoGenerator;
 import objectDefinitions.CargoSpaceIndividual;
-import basicTools.CargoSolidRot;
 import basicTools.FillCargo;
-import basicTools.PentominoRot;
 import databases.CargoData;
 
 public class FillCargoRandomly extends FillCargo {
@@ -72,12 +70,9 @@ public class FillCargoRandomly extends FillCargo {
 							CargoGenerator cargo = tempList.get(randomIndex);
 							tempList.remove(randomIndex);
 							ArrayList<CargoGenerator> rotationList;
-							if (runtimeData.isPentominoCargoSet()) {
-								rotationList = PentominoRot.generatePentominoCargoRot(cargo);
 
-							} else {
-								rotationList = CargoSolidRot.generateSolidCargoRot(cargo);
-							}
+							rotationList = new ArrayList<CargoGenerator>(runtimeData.getCargoData().getRotationIndex(
+									randomIndex));
 
 							while (rotationList.size() > 0 && somethingPlaced == false) {
 								int randomIndexRot = (int) (Math.random() * rotationList.size());

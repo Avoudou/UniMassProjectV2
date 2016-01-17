@@ -1,8 +1,7 @@
 package databases;
 
-import java.util.ArrayList;
-
 import objectDefinitions.CargoGenerator;
+import basicTools.CargoSolidRot;
 
 public class ShapesDefault extends CargoData {
 
@@ -23,6 +22,10 @@ public class ShapesDefault extends CargoData {
 		super.addShape(shapeB);
 		shapeC.setWeightTotal(5);
 		super.addShape(shapeC);
+		super.setRotationIndex(CargoSolidRot.generateSolidCargoRot(shapeA));
+		super.setRotationIndex(CargoSolidRot.generateSolidCargoRot(shapeB));
+		super.setRotationIndex(CargoSolidRot.generateSolidCargoRot(shapeC));
+
 	}
 
 }

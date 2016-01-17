@@ -1,6 +1,7 @@
 package databases;
 
 import objectDefinitions.CargoGenerator;
+import basicTools.PentominoRot;
 
 /**
  * This class contains an ArrayList with the pentomino shapes as CargoGenerators
@@ -33,6 +34,10 @@ public class ShapesPentomino3D extends CargoData {
 		super.addShape(tPentomino);
 		super.addShape(lPentomino);
 		super.addShape(pPentomino);
+		super.setRotationIndex(PentominoRot.generatePentominoCargoRot(lPentomino));
+		super.setRotationIndex(PentominoRot.generatePentominoCargoRot(pPentomino));
+		super.setRotationIndex(PentominoRot.generatePentominoCargoRot(tPentomino));
+
 	}
 
 	/**
