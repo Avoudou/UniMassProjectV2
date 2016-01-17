@@ -13,7 +13,7 @@ public class DivideAndLoad extends FillCargo {
 	private FillCargoRandomly randomLoader;
 	private RunTimeData runtimeData;
 	private UIWindow aWindow;
-	private int freeSpacesEnd = 0;
+	private int freeSpacesEnd = 1;
 
 	private int heightOfSubSpace;
 
