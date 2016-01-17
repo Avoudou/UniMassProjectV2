@@ -25,7 +25,11 @@ public class RunAlgorithmsMenu extends JPanel {
 	private RunTimeData runtimeData;
 	private JButton startRandomButton = new JButton("RUN:Random Algorithm");
 	private JButton startGreedyButton = new JButton("RUN:Greedy Algorithm");
-	private JTextField population = new JTextField("1000");
+	private JButton startDivideButton = new JButton("RUN:Divisor Algorithm");
+	private JButton startModRandomButton = new JButton("RUN:Mod.Random Alg.");
+
+	private JTextField populatioRunAlgorithms = new JTextField("1000");
+
 	private UIWindow aWindow;
 
 	public RunAlgorithmsMenu(RunTimeData runtimeData, UIWindow aWindow) {
@@ -34,15 +38,23 @@ public class RunAlgorithmsMenu extends JPanel {
 
 		setLayout(new GridLayout(15, 1));
 
-		add(new JLabel("Random Algorithm Population :"));
-
-		add(population);
-
+		add(new JLabel("Run-Algorithms Population :"));
+		add(populatioRunAlgorithms);
+		add(new JLabel(""));
 		startRandomButton.addActionListener(new RunRandomButtonListener());
 		add(startRandomButton);
-		startGreedyButton.addActionListener(new RunGreedyButtonListener());
+
+
 		add(new JLabel(""));
+
+		startGreedyButton.addActionListener(new RunGreedyButtonListener());
 		add(startGreedyButton);
+
+		add(new JLabel(""));
+
+		add(startModRandomButton);
+		add(new JLabel(""));
+		add(startDivideButton);
 
 	}
 
@@ -58,7 +70,7 @@ public class RunAlgorithmsMenu extends JPanel {
 			FillCargoRandomly randomLoader = new FillCargoRandomly(runtimeData, aWindow);
 			long start = System.currentTimeMillis();
 
-			CargoSpaceIndividual bestSolution = randomLoader.createRandomPopulation(Integer.parseInt(population
+			CargoSpaceIndividual bestSolution = randomLoader.createRandomPopulation(Integer.parseInt(populatioRunAlgorithms
 					.getText()));
 			double elapsedInMs = System.currentTimeMillis() - start;
 			CargoData shapeList = runtimeData.getCargoData();
@@ -90,9 +102,10 @@ public class RunAlgorithmsMenu extends JPanel {
 
 			GreedyAlgorithm greedyLoader = new GreedyAlgorithm(runtimeData);
 			long start = System.currentTimeMillis();
-			CargoSpaceIndividual bestSolution = greedyLoader.createRandomPopulation(1000);
+			CargoSpaceIndividual bestSolution = greedyLoader.createRandomPopulation(Integer.parseInt(populatioRunAlgorithms
+					.getText()));
 			double elapsedInMs = System.currentTimeMillis() - start;
-
+			System.out.println(runtimeData.getCargoData().getShape(0).getWeightTotal());
 			CargoData shapeList = runtimeData.getCargoData();
 			Evaluator evaluator = new Evaluator();
 			double utopiaWeight = evaluator.getUtopianMaxWeight(bestSolution, shapeList);

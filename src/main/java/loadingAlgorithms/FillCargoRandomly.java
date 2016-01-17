@@ -47,7 +47,6 @@ public class FillCargoRandomly extends FillCargo {
 			}
 
 		}
-
 		return bestSpace;
 	}
 

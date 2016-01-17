@@ -31,9 +31,10 @@ public class ShapesPentomino3D extends CargoData {
 		removeCube(tPentomino, 2, 2);
 		tPentomino.setWeightTotal(5);
 
-		super.addShape(tPentomino);
 		super.addShape(lPentomino);
 		super.addShape(pPentomino);
+		super.addShape(tPentomino);
+
 		super.setRotationIndex(PentominoRot.generatePentominoCargoRot(lPentomino));
 		super.setRotationIndex(PentominoRot.generatePentominoCargoRot(pPentomino));
 		super.setRotationIndex(PentominoRot.generatePentominoCargoRot(tPentomino));

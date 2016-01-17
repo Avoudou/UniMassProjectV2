@@ -79,13 +79,11 @@ public class GreedyAlgorithm extends FillCargo {
 
 		for (int i = 0; i < populationSize; i++) {
 
-			// System.out.println("population size: "+i);
 			CargoSpaceIndividual tempSpace = new CargoSpaceIndividual(y, x, z);
 			fillCargoSpaceGreedy(tempSpace, shapes);
 			int tempWeight = tempSpace.getTotalWeight();
 			bestMaxWeight = tempWeight;
 			bestSpace = tempSpace;
-			System.out.println("weight of best solution found : " + bestMaxWeight);
 
 		}
 
