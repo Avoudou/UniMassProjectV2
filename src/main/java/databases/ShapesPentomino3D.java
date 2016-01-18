@@ -32,15 +32,16 @@ public class ShapesPentomino3D extends CargoData {
 		removeCube(tPentomino, 1, 2);
 		removeCube(tPentomino, 2, 2);
 		tPentomino.setWeightTotal(5);
-		CargoGenerator lPentominoFlip = new CargoGenerator(4, 2, 1, 2);
-		removeCube(lPentomino, 0, 1);
-		removeCube(lPentomino, 1, 1);
-		removeCube(lPentomino, 2, 1);
 
-		// flips not to be added to main list only rotation list
+		CargoGenerator lPentominoFlip = new CargoGenerator(4, 2, 1, 2);
+		removeCube(lPentominoFlip, 0, 1);
+		removeCube(lPentominoFlip, 1, 1);
+		removeCube(lPentominoFlip, 2, 1);
 		lPentominoFlip.setWeightTotal(3);
+		// flips not to be added to main list only rotation list
+
 		CargoGenerator pPentominoFlip = new CargoGenerator(2, 3, 1, 3);
-		removeCube(pPentomino, 1, 0);
+		removeCube(pPentominoFlip, 1, 0);
 		pPentominoFlip.setWeightTotal(4);
 
 		super.addShape(lPentomino);
@@ -53,11 +54,11 @@ public class ShapesPentomino3D extends CargoData {
 
 		ArrayList<CargoGenerator> lFlipedRots = PentominoRot.generatePentominoCargoRot(lPentominoFlip);
 		ArrayList<CargoGenerator> pFlipedRots = PentominoRot.generatePentominoCargoRot(pPentominoFlip);
-		for (int i = 0; i < lFlipedRots.size(); i++) {
-			super.getRotationIndex(0).add(lFlipedRots.get(i));
-			super.getRotationIndex(1).add(pFlipedRots.get(i));
-
-		}
+		// for (int i = 0; i < lFlipedRots.size(); i++) {
+		// super.getRotationIndex(0).add(lFlipedRots.get(i));
+		// super.getRotationIndex(1).add(pFlipedRots.get(i));
+		//
+		// }
 	}
 
 	/**
