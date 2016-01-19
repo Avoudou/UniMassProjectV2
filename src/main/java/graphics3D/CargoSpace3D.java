@@ -18,6 +18,7 @@ import com.badlogic.gdx.graphics.g3d.ModelInstance;
 import com.badlogic.gdx.graphics.g3d.attributes.BlendingAttribute;
 import com.badlogic.gdx.graphics.g3d.attributes.ColorAttribute;
 import com.badlogic.gdx.graphics.g3d.environment.DirectionalLight;
+import com.badlogic.gdx.graphics.g3d.utils.CameraInputController;
 import com.badlogic.gdx.graphics.g3d.utils.MeshPartBuilder;
 import com.badlogic.gdx.graphics.g3d.utils.ModelBuilder;
 import com.badlogic.gdx.math.MathUtils;
@@ -30,6 +31,8 @@ public class CargoSpace3D extends Basic3DTest {
 	private int GRID_MAX_X = 0;
 	private int GRID_MAX_Y = 0;
 	private int GRID_MAX_Z = 0;
+
+	private CameraInputController camController;
 
 	public CargoSpace3D(CargoSpaceIndividual cargoSpace) {
 		this.cargoSpace = cargoSpace;
@@ -53,6 +56,10 @@ public class CargoSpace3D extends Basic3DTest {
 		cam.near = 1f;
 		cam.far = 300f;
 		cam.update();
+
+		camController = new CameraInputController(cam);
+		camController.forwardTarget = true;
+		Gdx.input.setInputProcessor(camController);
 
 		ModelBuilder modelBuilder = new ModelBuilder();
 

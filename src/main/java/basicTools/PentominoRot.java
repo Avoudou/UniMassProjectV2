@@ -71,9 +71,7 @@ public class PentominoRot {
 		return shapeRot;
 	}
 
-	public static int[][] flip2DArray(int[][] anArray) {
-		return null;
-	}
+
 
 	public static CargoGenerator constructPentomino3DYXplane(int[][] anArray, int shapeId) {
 		CargoGenerator newPentomino = new CargoGenerator(anArray.length, anArray[0].length, 1, shapeId);
