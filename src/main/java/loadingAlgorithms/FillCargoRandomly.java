@@ -72,7 +72,7 @@ public class FillCargoRandomly extends FillCargo {
 
 							rotationList = new ArrayList<CargoGenerator>(runtimeData.getCargoData().getRotationIndex(
 									randomIndex));
-
+							// runtimeData.getCargoData().getRotList().remove(randomIndex);
 							while (rotationList.size() > 0 && somethingPlaced == false) {
 								int randomIndexRot = (int) (Math.random() * rotationList.size());
 								CargoGenerator cargoRot = rotationList.get(randomIndexRot);

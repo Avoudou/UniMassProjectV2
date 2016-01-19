@@ -13,7 +13,7 @@ public class DivideAndLoad extends FillCargo {
 	private FillCargoRandomly randomLoader;
 	private RunTimeData runtimeData;
 	private UIWindow aWindow;
-	private int freeSpacesEnd = 1;
+	private int freeSpacesEnd = 3;
 
 	private int heightOfSubSpace;
 
@@ -106,9 +106,9 @@ public class DivideAndLoad extends FillCargo {
 			}
 		}
 		hyperSpace.setTotalWeight(timesToRepeat * subSpace.getTotalWeight());
-
+		FillCargoRandomly randomLoader = new FillCargoRandomly(runtimeData, aWindow);
+		randomLoader.createDivisorPopulation(10000, hyperSpace);
 	}
-
 	public int getSubSpaceOutput() {
 		return heightOfSubSpace;
 	}

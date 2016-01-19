@@ -72,8 +72,8 @@ public class ModRandom extends FillCargo {
 
 							rotationList = new ArrayList<CargoGenerator>(runtimeData.getCargoData().getRotationIndex(
 									randomIndex));
+							// runtimeData.getCargoData().getRotList().remove(randomIndex);
 							removeUnalignedRotations(aCargoSpace, rotationList);
-
 							while (rotationList.size() > 0 && somethingPlaced == false) {
 								int randomIndexRot = (int) (Math.random() * rotationList.size());
 								CargoGenerator cargoRot = rotationList.get(randomIndexRot);
@@ -121,6 +121,12 @@ public class ModRandom extends FillCargo {
 
 	private void removeUnalignedRotations(CargoSpaceIndividual aSpace, ArrayList<CargoGenerator> rotationList) {
 		int directionDesiredIndicator = getMaxSpaceDimDir(aSpace);
+
+		for (int i = 0; i < rotationList.size(); i++) {
+			if (getMaxCargoDimDir(rotationList.get(i)) != directionDesiredIndicator) {
+				rotationList.remove(i);
+			}
+		}
 	}
 
 	private int getMaxSpaceDimDir(CargoSpaceIndividual aCargoSpace) {

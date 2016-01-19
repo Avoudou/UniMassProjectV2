@@ -36,4 +36,8 @@ public class CargoData {
 		return rotationList.get(index);
 	}
 
+	public ArrayList<ArrayList<CargoGenerator>> getRotList() {
+		return rotationList;
+	}
+
 }

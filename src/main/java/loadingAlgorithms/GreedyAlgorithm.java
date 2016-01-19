@@ -48,7 +48,7 @@ public class GreedyAlgorithm extends FillCargo {
 
 							ArrayList<CargoGenerator> rotationList = new ArrayList<CargoGenerator>(runtimeData
 									.getCargoData().getRotationIndex(bestIndex));
-
+							// runtimeData.getCargoData().getRotList().remove(bestIndex);
 							while (rotationList.size() > 0 && somethingPlaced == false) {
 								int randomIndexRot = (int) (Math.random() * rotationList.size());
 								CargoGenerator cargoRot = rotationList.get(randomIndexRot);
