@@ -42,15 +42,15 @@ public class CargoSetCustomPanel extends JPanel {
 	private JTextField shapeCY = new JTextField();
 	private JTextField shapeCX = new JTextField();
 	private JTextField shapeCZ = new JTextField();
-	private JLabel shapeAYlabel = new JLabel("Ycoord");
-	private JLabel shapeAXlabel = new JLabel("X coord");
-	private JLabel shapeAZlabel = new JLabel("Z coord");
-	private JLabel shapeBYlabel = new JLabel("Ycoord");
-	private JLabel shapeBXlabel = new JLabel("X coord");
-	private JLabel shapeBZlabel = new JLabel("Z coord");
-	private JLabel shapeCYlabel = new JLabel("Ycoord");
-	private JLabel shapeCXlabel = new JLabel("X coord");
-	private JLabel shapeCZlabel = new JLabel("Z coord");
+	private JLabel shapeAYlabel = new JLabel("Y Dim");
+	private JLabel shapeAXlabel = new JLabel("X Dim");
+	private JLabel shapeAZlabel = new JLabel("Z Dim");
+	private JLabel shapeBYlabel = new JLabel("Y Dim");
+	private JLabel shapeBXlabel = new JLabel("X Dim");
+	private JLabel shapeBZlabel = new JLabel("Z Dim");
+	private JLabel shapeCYlabel = new JLabel("Y Dim");
+	private JLabel shapeCXlabel = new JLabel("X Dim");
+	private JLabel shapeCZlabel = new JLabel("Z Dim");
 
 	private RunTimeData runtimeData;
 	private boolean fieldsPlaced = false;
